@@ -5,21 +5,11 @@
  * @format
  * @flow strict-local
  */
-
 import React, {Component} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Image
-} from 'react-native';
-
 import Drawer from './Drawer.js';
- 
-
  class App extends Component{
    render(){
-     return(
+     return (
         <Drawer />
      );
    }

@@ -6,7 +6,7 @@ import{
   StatusBar,
   FlatList,
   Text,
-  Image
+  Image,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -40,14 +40,13 @@ import crash from '../assets/images/crash.png';
         );
       }
      render(){
-            return(
+            return (
                 <View>
                   <View style={{backgroundColor:"#8c231a", padding:10}}>
             <StatusBar barStyle="light-content" backgroundColor="#8c231a" />
             <View style={{alignSelf:'center', marginTop:10 ,padding:44}}>
               <Text style={{color:'#fff', fontSize:20, fontWeight:'bold'}}>Home</Text>
             </View>
-            
             
                <TouchableOpacity 
                 style={{ alignSelf:'flex-start', marginTop:-10, margin:18, }}
@@ -58,7 +57,7 @@ import crash from '../assets/images/crash.png';
                     <View 
                     style={{height:150,padding:10,
                       borderTopLeftRadius:5,borderTopRightRadius:5,borderBottomLeftRadius:5,borderBottomRightRadius:5,
-                      backgroundColor: '#F5FFFA',}}>
+                      backgroundColor:'#F5FFFA'}}>
                          <Image
                         source={crash}
                         style={{alignSelf:'center',width:70,height:70}}
@@ -72,9 +71,7 @@ import crash from '../assets/images/crash.png';
                         fontSize:18,borderTopLeftRadius:5,borderTopRightRadius:5,borderBottomLeftRadius:5,borderBottomRightRadius:5,}}>Report crash</Text>
                         </TouchableOpacity>
                     </View>
-
-                    </View>
-                    
+                    </View>       
                   
         <FlatList
         style={{width:'100%'}}
@@ -85,22 +82,8 @@ import crash from '../assets/images/crash.png';
         onRefresh={this.handleRefresh.bind(this)}
       />
     </View>      
-         )
-     }
- }
+         );
+     };
+ };
 
- styles = StyleSheet.create({
-      navBar: {
-        backgroundColor: '#8c231c',
-        height: 44,
-        alignItems: 'center',
-        padding:44,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }, 
-      reportCard:{
-        
-      },
-});
-
-export default HomeScreen
+export default HomeScreen;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Linking, TouchableNativeFeedback } from 'react-native';
+import { View, Linking, TouchableNativeFeedback, StyleSheet } from 'react-native';
 import { Text, Card, Divider } from 'react-native-elements';
 import moment from 'moment';
 
@@ -33,9 +33,9 @@ export default class Article extends React.Component {
           <Text style={{ marginBottom: 10 }}>
             {description || 'Read More..'}
           </Text>
-          <Divider style={{ backgroundColor: '#dfe6e9' }} />
+          <Divider style={{backgroundColor: '#dfe6e9'}} />
           <View
-            style={{ flexDirection: 'row', justifyContent: 'space-between' }}
+            style={{flexDirection:'row', justifyContent: 'space-between' }}
           >
             <Text style={noteStyle}>{source.name.toUpperCase()}</Text>
             <Text style={noteStyle}>{time}</Text>
@@ -46,17 +46,18 @@ export default class Article extends React.Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   noteStyle: {
     margin: 5,
     fontStyle: 'italic',
     color: '#b2bec3',
-    fontSize: 10
+    fontSize: 10,
   },
   featuredTitleStyle: {
     marginHorizontal: 5,
     textShadowColor: '#00000f',
-    textShadowOffset: { width: 3, height: 3 },
-    textShadowRadius: 3
+    textShadowOffset: {width: 3, height: 3},
+    textShadowRadius: 3,
   }
-};
+});
+ 

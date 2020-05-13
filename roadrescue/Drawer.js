@@ -3,9 +3,8 @@ import {
   SafeAreaView,
   StyleSheet,
   View,
-  Image
+  Image,
 } from 'react-native';
-
 import HomeScreen from './screens/HomeScreen.js';
 import AboutScreen from './screens/AboutScreen.js';
 import ContactScreen from './screens/ContactScreen.js';
@@ -22,45 +21,39 @@ import building from './assets/images/building.png';
 import profile from './assets/images/profile.png';  
 import user from './assets/images/user.png';  
 import setting from './assets/images/setting.png';  
-import { DrawerItems, createDrawerNavigator } from 'react-navigation-drawer';
-import { createAppContainer } from 'react-navigation';
+import {DrawerItems, createDrawerNavigator} from 'react-navigation-drawer';
+import {createAppContainer} from 'react-navigation';
  
  
 class Drawer extends Component{
     render(){
-        return(
+        return (
             <App2 />
         );
       }
 }
  
-
 const CustomDrawerComponent = (props) => (
-    <View>
-      <SafeAreaView>
-        <View style={{justifyContent:'center', height:100, padding:20}}>
+    <SafeAreaView>
+        <View style={{justifyContent:'center',height:100,padding:20,marginTop:10}}>
            <Image 
-           style={styles.drawerImage}
-           source={medication}
+           style={styles.drawerImage}source={medication}
            />
         </View>
         <View>
-          <DrawerItems {...props } />
-           
+          <DrawerItems{...props } />
         </View>
-      </SafeAreaView>
-    </View>
+    </SafeAreaView>
   );
  
   const DrawerNavigator = createDrawerNavigator({
-
     Home:{
       screen:HomeScreen,
       navigationOptions:{
          drawerIcon:(
            <Image source={building} style={{width:25, height:25}}/>
          )
-      }
+      },
     },
     
     'About us':{
@@ -110,7 +103,6 @@ const CustomDrawerComponent = (props) => (
    screen:EditProfile,
  },
  
- 
    Admin:{
    screen:ContactScreen,
    navigationOptions:{
@@ -136,7 +128,8 @@ const CustomDrawerComponent = (props) => (
   },
   );
   
-  const App2 = createAppContainer(DrawerNavigator);
+
+const App2 = createAppContainer(DrawerNavigator);
  
  const styles = StyleSheet.create({
    container:{
@@ -154,7 +147,7 @@ const CustomDrawerComponent = (props) => (
    },
    label:{
      padding:15,
-     fontWeight: 'bold'
+     fontWeight: 'bold',
    }
  })
  

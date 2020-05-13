@@ -18,25 +18,24 @@ Icon.loadFont();
 
  class EditProfile extends Component{
     static navigationOptions = {
-        drawerLabel: () => null
+        drawerLabel:() => null
    }
-    constructor()
-    {
+    constructor(){
       super();
       this.state = { hidePassword: true }
     }
-    managePasswordVisibility = () =>
+    managePasswordVisibility =()=>
     {
       this.setState({ hidePassword: !this.state.hidePassword });
     }
 
      render(){
-         return(
+         return (
             <LinearGradient
             style={{flex:1}}
             colors={[
-              "#D7816A",
-              "#BD4F6C"    
+              '#D7816A',
+              '#BD4F6C'    
             ]}
           >
                  <SafeAreaView style={styles.safeArea}>
@@ -109,12 +108,12 @@ Icon.loadFont();
           style={styles.inputFlex2}
           label={"password"}
           borderColor={"#fff"}
-          labelStyle={{ color: "#fff" }}
-          inputStyle={{ color: "#fff" }}
+          labelStyle={{color: "#fff"}}
+          inputStyle={{color: "#fff"}}
         />
-         <TouchableOpacity activeOpacity = { 0.8 } style = { styles.visibilityBtn } onPress = { this.managePasswordVisibility }>
-            <Image source = { ( this.state.hidePassword ) ? require('../assets/images/show.png') : require('../assets/images/hide.png') }
-             style = { styles.btnImage } />
+         <TouchableOpacity activeOpacity = {0.8} style = {styles.visibilityBtn} onPress = { this.managePasswordVisibility}>
+            <Image source = {(this.state.hidePassword) ? require('../assets/images/show.png') : require('../assets/images/hide.png')}
+             style = {styles.btnImage} />
           </TouchableOpacity>
         </View>
                 </View>
@@ -129,12 +128,12 @@ Icon.loadFont();
                     </ScrollView>
                 </SafeAreaView>
                 </LinearGradient>
-         )
-     }
- }
+         );
+     };
+ };
 
 
- styles = StyleSheet.create({
+ const styles = StyleSheet.create({
     wrapper:{
         flex: 1,
         alignItems: 'center',
@@ -149,28 +148,26 @@ Icon.loadFont();
         paddingLeft: 40,
         paddingRight: 40,
     },
-
     safeArea:{
         flex:1,
-    },
-    
+    }, 
     conText:{
         color: '#fff',
         fontSize: 17,
         fontWeight: 'bold',
-        marginTop: 20
+        marginTop: 20,
     },
     logText:{
         color: '#fff',
         fontSize: 15,
         fontWeight: 'bold',
-        marginTop: 20
+        marginTop: 20,
     },
     loginText:{
         color: '#fff',
         fontSize: 15,
         fontWeight: 'bold',
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
    },
    ImageStyle: {
     padding: 10,
@@ -186,14 +183,13 @@ Icon.loadFont();
     padding: 20,
     marginTop: 20,
     borderRadius:25,
-    backgroundColor: '#A40606'
+    backgroundColor:'#A40606',
 },
 image:{
     width:50,
     height: 50,
     marginTop: 20,
-    padding:20,
-   
+    padding:20,  
 },
 content: {
     paddingBottom: 300,
@@ -204,7 +200,7 @@ content: {
   card2: {
     padding: 14,
     alignSelf: 'stretch',
-    marginTop: 20
+    marginTop: 20,
   },
   input: {
     marginTop: 4,
@@ -212,11 +208,11 @@ content: {
   inputFlex: {
     marginTop: 4,
     alignSelf:'stretch',
-    width: 150
+    width: 150,
   },
   inputFlex2: {
     alignSelf:'stretch',
-    width: 250
+    width: 250,
   },
   title: {
     paddingBottom: 16,
@@ -224,7 +220,7 @@ content: {
     color: "#404d5b",
     fontSize: 20,
     fontWeight: "bold",
-    opacity: 0.8,
+    opacity:0.8,
   },
   cardStyle:{
     flex:1,
@@ -235,23 +231,21 @@ content: {
      borderTopRightRadius:100,
      borderBottomLeftRadius:100,
      borderBottomRightRadius:100,
-    backgroundColor: '#fff'
+    backgroundColor:'#fff',
   },
   visibilityBtn:{
     position: 'absolute',
     right: 15,
     height: 40,
     width: 35,
-    padding: 3
+    padding:3,
   },
   btnImage:{
     resizeMode: 'contain',
     height: '100%',
     width: '100%',
     marginTop:7,
-  }
- 
-     
+  }  
 });
 
 export default EditProfile; 

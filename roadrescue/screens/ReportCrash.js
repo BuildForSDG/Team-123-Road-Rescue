@@ -9,16 +9,15 @@ import{
   Image,
   Button,
   ScrollView,
-  SafeAreaView
 } from 'react-native';
 import medication from '../assets/images/medication.png';
+import { SafeAreaView } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Madoka } from 'react-native-textinput-effects';
+import {Madoka} from 'react-native-textinput-effects';
 import ImagePicker from 'react-native-image-picker';
-import LinearGradient from "react-native-linear-gradient";
- Icon.loadFont();
+import LinearGradient from 'react-native-linear-gradient';
+Icon.loadFont();
  
-
  class ReportCrash extends Component{
     constructor(props) {
         super(props);
@@ -29,27 +28,28 @@ import LinearGradient from "react-native-linear-gradient";
         };
       }
 
-      ShowHideComponent = () => {
-        if (this.state.show == true) {
-          this.setState({ show: false});
+      ShowHideComponent =()=> {
+        if (this.state.show === true) {
+          this.setState({show: false});
         } else {
-          this.setState({ show: true });
+          this.setState({show: true});
         }
       };
 
 
-      chooseFile = () => {
+      chooseFile =()=> {
         var options = {
-          title: 'Select Image',
+          title: 'Choose Image',
           customButtons: [
-            { name: 'customOptionKey', title: 'Choose Photo from Custom Option' },
+            {name: 'customOptionKey', title: 'Choose Photo from Custom Option'},
           ],
           storageOptions: {
             skipBackup: true,
             path: 'images',
           },
         };
-        this.setState({ loadingImage: true });
+
+        this.setState({loadingImage: true});
         ImagePicker.showImagePicker(options, response => {
             console.log('Response = ', response);
       
@@ -63,8 +63,6 @@ import LinearGradient from "react-native-linear-gradient";
               alert(response.customButton);
             } else {
               let source = response;
-              // You can also display the image using data:
-              // let source = { uri: 'data:image/jpeg;base64,' + response.data };
               this.setState({
                 filePath: source,
               });
@@ -76,10 +74,9 @@ import LinearGradient from "react-native-linear-gradient";
             <LinearGradient
             style={{flex:1}}
             colors={[
-              "#D7816A",
-              "#BD4F6C"    
-            ]}
-          >
+              '#D7816A',
+              '#BD4F6C'    
+            ]}>
                  <SafeAreaView style={styles.safeArea}>
                <TouchableOpacity 
                 style={{alignItems:'flex-start', margin:18}}
@@ -111,8 +108,8 @@ import LinearGradient from "react-native-linear-gradient";
           style={styles.inputFlex2}
           label={"full name"}
           borderColor={"#fff"}
-          labelStyle={{ color: "#fff" }}
-          inputStyle={{ color: "#fff" }}
+          labelStyle={{color: "#fff"}}
+          inputStyle={{color: "#fff"}}
         />
         </View>
          ): null }
@@ -141,9 +138,9 @@ import LinearGradient from "react-native-linear-gradient";
         />
         </View>
            <Image 
-          source = { this.state.loadingImage 
+          source = {this.state.loadingImage 
           ? 
-          { uri: this.state.filePath.uri }
+          {uri: this.state.filePath.uri}
           : 
           require('../assets/images/placeholder.png')}
           style={{width:100, height:100, resizeMode : 'stretch', marginTop:10, alignSelf:'center' }} 
@@ -184,7 +181,7 @@ import LinearGradient from "react-native-linear-gradient";
      }
  }
 
- styles = StyleSheet.create({
+ const styles = StyleSheet.create({
     wrapper:{
         flex: 1,
         alignItems: 'center',
@@ -199,7 +196,6 @@ import LinearGradient from "react-native-linear-gradient";
         paddingLeft: 40,
         paddingRight: 40,
     },
-
     safeArea:{
         flex:1,
     },
@@ -225,7 +221,7 @@ import LinearGradient from "react-native-linear-gradient";
     msgBox:{
         alignSelf: 'stretch',
         borderColor: '#fff',
-        color: '#000',
+        color: '#fff',
         height: 130,
         borderWidth: 2,
         borderTopLeftRadius:2,
@@ -234,7 +230,7 @@ import LinearGradient from "react-native-linear-gradient";
         borderBottomLeftRadius:2,
         marginTop: 20,
         padding:10,
-        textAlignVertical: 'top'
+        textAlignVertical: 'top',
     },
     loginText:{
         color: '#fff',
@@ -256,11 +252,8 @@ import LinearGradient from "react-native-linear-gradient";
     padding: 20,
     marginTop: 20,
     borderRadius:25,
-    backgroundColor: '#A40606'
-    
+    backgroundColor: '#A40606',
 },
- 
- 
   card1: {
     paddingVertical: 16,
   },

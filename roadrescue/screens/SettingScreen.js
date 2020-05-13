@@ -7,8 +7,8 @@ import {
   Image,
   Platform,
   RefreshControl,
-  TouchableOpacity
-} from 'react-native'
+  TouchableOpacity,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import user from '../assets/images/user.png'; 
 import history from '../assets/images/history.png'; 
@@ -16,7 +16,7 @@ import curve from '../assets/images/curve.png';
 import bell from '../assets/images/bell.png'; 
 import terms from '../assets/images/terms.png'; 
 import privacy from '../assets/images/privacy.png'; 
-import { SettingsScreen } from 'react-native-settings-screen'
+import {SettingsScreen} from 'react-native-settings-screen';
 
 const fontFamily = Platform.OS === 'ios' ? 'Avenir' : 'sans-serif'
 
@@ -64,7 +64,7 @@ export default class SettingScreen extends React.Component {
       header: 'Application details'.toUpperCase(),
       rows: [
         {
-          title: <Text style={{padding:10}}>About us</Text>,
+          title: <Text style={{padding:10}}  onPress={()=>this.props.navigation.navigate('About us')}>About us</Text>,
           renderAccessory: () => (
             <Image source={curve} style={{width:25, height:25}}/>
           ),

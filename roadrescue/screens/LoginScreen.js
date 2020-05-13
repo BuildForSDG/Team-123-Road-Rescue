@@ -17,25 +17,22 @@ import LinearGradient from "react-native-linear-gradient";
  
 
  class LoginScreen extends Component{
-  constructor()
-  {
+  constructor(){
     super();
-    this.state = { hidePassword: true }
+    this.state = {hidePassword: true};
   }
-  managePasswordVisibility = () =>
-  {
-    this.setState({ hidePassword: !this.state.hidePassword });
+  managePasswordVisibility = () =>{
+    this.setState({hidePassword: !this.state.hidePassword});
   }
 
      render(){
-         return(
+         return (
             <LinearGradient
             style={{flex:1}}
             colors={[
-              "#D7816A",
-              "#BD4F6C"
-            ]}
-          >
+              '#D7816A',
+              '#BD4F6C'
+            ]}>
                  <SafeAreaView style={styles.safeArea}>
                <TouchableOpacity 
                 style={{alignItems:'flex-start', margin:18}}
@@ -44,12 +41,12 @@ import LinearGradient from "react-native-linear-gradient";
                     </TouchableOpacity>
                    
                     <ScrollView>
-                    <KeyboardAvoidingView behavior='padding'
+                    <KeyboardAvoidingView behavior="padding"
                     style={styles.wrapper}>
                        <View style={styles.cardStyle}> 
                          <Image
                         style={{ width:70,height: 70,
-                          marginTop: 20,padding:20,}}
+                          marginTop: 20,padding:20}}
                         source={medication}
                        />
                     </View>
@@ -69,7 +66,7 @@ import LinearGradient from "react-native-linear-gradient";
         />
         </View>
 
-        <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
+        <View style={{flex:1, flexDirection:'row',flexWrap:'wrap',justifyContent:'space-around'}}>
         <Icon name="lock" size={30} style={{padding:10, marginTop:10, color:'#fff'}}  /> 
         <Madoka
             secureTextEntry={this.state.hidePassword}
@@ -80,7 +77,7 @@ import LinearGradient from "react-native-linear-gradient";
           inputStyle={{ color: "#fff" }}
         />
          <TouchableOpacity activeOpacity = { 0.8 } style = { styles.visibilityBtn } onPress = { this.managePasswordVisibility }>
-            <Image source = { ( this.state.hidePassword ) ? require('../assets/images/show.png') : require('../assets/images/hide.png') }
+            <Image source = {(this.state.hidePassword ) ? require('../assets/images/show.png') : require('../assets/images/hide.png') }
              style = { styles.btnImage } />
           </TouchableOpacity>
         </View>
@@ -104,7 +101,7 @@ import LinearGradient from "react-native-linear-gradient";
      }
  }
 
- styles = StyleSheet.create({
+ const styles = StyleSheet.create({
     wrapper:{
         flex: 1,
         alignItems: 'center',
@@ -119,7 +116,6 @@ import LinearGradient from "react-native-linear-gradient";
         paddingLeft: 40,
         paddingRight: 40,
     },
-
     safeArea:{
         flex:1,
     },
@@ -129,7 +125,6 @@ import LinearGradient from "react-native-linear-gradient";
         fontWeight: 'bold',
         marginTop: 20
     },
-
     loginText:{
         color: '#fff',
         fontSize: 15,
@@ -213,9 +208,7 @@ content: {
     fontSize: 15,
     fontWeight: 'bold',
     marginTop: 20
-},
- 
-     
+},   
 });
 
 export default LoginScreen

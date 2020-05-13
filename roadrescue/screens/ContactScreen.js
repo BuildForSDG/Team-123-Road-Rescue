@@ -98,7 +98,7 @@ import LinearGradient from "react-native-linear-gradient";
      }
  }
 
- styles = StyleSheet.create({
+ const styles = StyleSheet.create({
     wrapper:{
         flex: 1,
         alignItems: 'center',
@@ -113,7 +113,6 @@ import LinearGradient from "react-native-linear-gradient";
         paddingLeft: 40,
         paddingRight: 40,
     },
-
     safeArea:{
         flex:1,
     },
@@ -128,13 +127,13 @@ import LinearGradient from "react-native-linear-gradient";
         borderBottomRightRadius:1,
         borderBottomLeftRadius:1,
         padding: 10,
-        fontSize: 16
+        fontSize: 16,
     },
     conText:{
         color: '#fff',
         fontSize: 17,
         fontWeight: 'bold',
-        marginTop: 20
+        marginTop: 20,
     },
     msgBox:{
         alignSelf: 'stretch',
@@ -148,13 +147,13 @@ import LinearGradient from "react-native-linear-gradient";
         borderBottomLeftRadius:2,
         marginTop: 20,
         padding:10,
-        textAlignVertical: 'top'
+        textAlignVertical: 'top',
     },
     loginText:{
         color: '#fff',
         fontSize: 15,
         fontWeight: 'bold',
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
    },
    ImageStyle: {
     padding: 10,
@@ -170,7 +169,7 @@ import LinearGradient from "react-native-linear-gradient";
     padding: 20,
     marginTop: 20,
     borderRadius:25,
-    backgroundColor: '#A40606'
+    backgroundColor:'#A40606',
     
 },
   card1: {
@@ -179,7 +178,7 @@ import LinearGradient from "react-native-linear-gradient";
   card2: {
     padding: 14,
     alignSelf: 'stretch',
-    marginTop: 20
+    marginTop: 20,
   },
   input: {
     marginTop: 4,
@@ -187,7 +186,7 @@ import LinearGradient from "react-native-linear-gradient";
   inputFlex: {
     marginTop: 4,
     alignSelf:'stretch',
-    width: 150
+    width: 150,
   },
   inputFlex2: {
     alignSelf:'stretch',
@@ -210,13 +209,13 @@ import LinearGradient from "react-native-linear-gradient";
      borderTopRightRadius:100,
      borderBottomLeftRadius:100,
      borderBottomRightRadius:100,
-    backgroundColor: '#fff'
+    backgroundColor:'#fff',
   },
   logText:{
     color: '#fff',
     fontSize: 15,
     fontWeight: 'bold',
-    marginTop: 20
+    marginTop: 20,
 },
  
 });

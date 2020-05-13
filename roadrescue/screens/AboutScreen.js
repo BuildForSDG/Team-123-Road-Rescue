@@ -3,7 +3,7 @@ import{
   StyleSheet,
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -12,12 +12,11 @@ import { SafeAreaView } from 'react-navigation';
 
  class AboutScreen extends Component{
         static navigationOptions = {
-            drawerLabel: () => null
+            drawerLabel:() => null
        }
      render(){
          return(
-             <View style={styles.container}>
-                 <SafeAreaView style={styles.safeArea}>
+             <SafeAreaView style={styles.container}>
                <TouchableOpacity 
                 style={{alignItems:'flex-start', margin:18}}
                 onPress={()=>this.props.navigation.openDrawer()}>   
@@ -26,19 +25,18 @@ import { SafeAreaView } from 'react-navigation';
                     <View style={{flex:1, alignItems:'center', justifyContent:'center'}}>
                         <Text>About screen</Text>
                     </View>
-                    </SafeAreaView>
-             </View>
-         )
+             </SafeAreaView>
+         );
      }
  }
 
- styles = StyleSheet.create({
+ const styles = StyleSheet.create({
     container:{
-        flex:1
+        flex:1,
     },
 
     safeArea:{
-        flex:1
+        flex:1,
     }
      
 });

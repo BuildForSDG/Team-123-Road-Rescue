@@ -28,7 +28,7 @@ Icon.loadFont();
     }
 
      render(){
-         return(
+         return (
             <LinearGradient
             style={{flex:1}}
             colors={[
@@ -44,12 +44,11 @@ Icon.loadFont();
                     </TouchableOpacity>
                    
                     <ScrollView>
-                    <KeyboardAvoidingView behavior='padding'
+                    <KeyboardAvoidingView
                     style={styles.wrapper}>
                         <View style={styles.cardStyle}>
                         <Image
-                        style={{ width:70,height: 70,marginTop: 20,
-                          padding:20,}}
+                      style={{width:70,height: 70,marginTop: 20,padding:20}}
                         source={medication}
                     />    
                         </View>
@@ -65,8 +64,8 @@ Icon.loadFont();
           style={styles.inputFlex2}
           label={"Full name"}
           borderColor={"#fff"}
-          labelStyle={{ color: "#fff" }}
-          inputStyle={{ color: "#fff" }}
+          labelStyle={{color: "#fff"}}
+          inputStyle={{color: "#fff"}}
         />
         </View>
         <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
@@ -75,8 +74,8 @@ Icon.loadFont();
           style={styles.inputFlex2}
           label={"email"}
           borderColor={"#fff"}
-          labelStyle={{ color: "#fff" }}
-          inputStyle={{ color: "#fff" }}
+          labelStyle={{color: "#fff"}}
+          inputStyle={{color: "#fff"}}
         />
         </View>
         <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
@@ -85,8 +84,8 @@ Icon.loadFont();
           style={styles.inputFlex2}
           label={"phone"}
           borderColor={"#fff"}
-          labelStyle={{ color: "#fff" }}
-          inputStyle={{ color: "#fff" }}
+          labelStyle={{color: "#fff"}}
+          inputStyle={{color: "#fff"}}
         />
         </View>
         <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
@@ -95,24 +94,24 @@ Icon.loadFont();
           style={styles.inputFlex2}
           label={"address"}
           borderColor={"#fff"}
-          labelStyle={{ color: "#fff" }}
-          inputStyle={{ color: "#fff" }}
+          labelStyle={{color: "#fff"}}
+          inputStyle={{color: "#fff"}}
         />
         </View>
 
         <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
         <Icon name="lock" size={30} style={{padding:10, marginTop:10, color:'#fff'}}  /> 
         <Madoka
-            secureTextEntry={this.state.hidePassword}
+          secureTextEntry={this.state.hidePassword}
           style={styles.inputFlex2}
           label={"password"}
           borderColor={"#fff"}
-          labelStyle={{ color: "#fff" }}
-          inputStyle={{ color: "#fff" }}
+          labelStyle={{color: "#fff"}}
+          inputStyle={{color: "#fff"}}
         />
          <TouchableOpacity activeOpacity = { 0.8 } style = { styles.visibilityBtn } onPress = { this.managePasswordVisibility }>
-            <Image source = { ( this.state.hidePassword ) ? require('../assets/images/show.png') : require('../assets/images/hide.png') }
-             style = { styles.btnImage } />
+            <Image source = {(this.state.hidePassword ) ? require('../assets/images/show.png') : require('../assets/images/hide.png')}
+             style = {styles.btnImage} />
           </TouchableOpacity>
         </View>
                 </View>
@@ -135,7 +134,7 @@ Icon.loadFont();
  }
 
 
- styles = StyleSheet.create({
+ const styles = StyleSheet.create({
     wrapper:{
         flex: 1,
         alignItems: 'center',
@@ -150,7 +149,6 @@ Icon.loadFont();
         paddingLeft: 40,
         paddingRight: 40,
     },
-
     safeArea:{
         flex:1,
     },
@@ -213,11 +211,11 @@ content: {
   inputFlex: {
     marginTop: 4,
     alignSelf:'stretch',
-    width: 150
+    width: 150,
   },
   inputFlex2: {
     alignSelf:'stretch',
-    width: 250
+    width: 250,
   },
   title: {
     paddingBottom: 16,
@@ -236,23 +234,21 @@ content: {
      borderTopRightRadius:100,
      borderBottomLeftRadius:100,
      borderBottomRightRadius:100,
-    backgroundColor: '#fff'
+    backgroundColor:'#fff',
   },
   visibilityBtn:{
     position: 'absolute',
     right: 15,
     height: 40,
     width: 35,
-    padding: 3
+    padding: 3,
   },
   btnImage:{
     resizeMode: 'contain',
     height: '100%',
     width: '100%',
     marginTop:7,
-  }
- 
-     
+  } 
 });
 
 export default RegisterScreen; 
