@@ -16,39 +16,21 @@ import { Madoka } from 'react-native-textinput-effects';
 import LinearGradient from "react-native-linear-gradient";
  Icon.loadFont();
  
-
  class ContactScreen extends Component{
-     render(){
-         return(
-            <LinearGradient
-            style={{flex:1}}
-            colors={[
-              "#D7816A",
-              "#BD4F6C"    
-            ]}
-          >
-                 <SafeAreaView style={styles.safeArea}>
-               <TouchableOpacity 
-                style={{alignItems:'flex-start', margin:18}}
-                onPress={()=>this.props.navigation.openDrawer()}>   
-                <Icon name="bars" size={30} color="#fff"/>
-                    </TouchableOpacity>
+    render() {
+      return (
+      <LinearGradient style={{flex:1}} colors={['#D7816A','#BD4F6C']}>
+        <SafeAreaView style={styles.safeArea}>
+        <TouchableOpacity style={{alignItems:'flex-start', margin:18}} onPress={()=>this.props.navigation.openDrawer()}>   
+        <Icon name="bars" size={30} color="#fff"/>
+        </TouchableOpacity>
                    
-                    <ScrollView>
-                    <KeyboardAvoidingView behavior='padding'
-                    style={styles.wrapper}>
-                      <View style={styles.cardStyle}>
-                         <Image
-                        style={{ width:80,
-                          height: 70,
-                          marginTop: 20,
-                          padding:10,}}
-                        source={medication}
-                    />
-                    </View>
-                <Text style={styles.conText}>
-                    Contact us
-                </Text>
+        <ScrollView>
+        <KeyboardAvoidingView style={styles.wrapper}>
+          <View style={styles.cardStyle}>
+          <Image style={styles.contactImage} source={medication} />
+          </View>
+          <Text style={styles.conText}>Contact us</Text>
                  
         <View style={[styles.card2]}>   
         <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
@@ -72,28 +54,19 @@ import LinearGradient from "react-native-linear-gradient";
           inputStyle={{ color: "#fff" }}
         />
         </View>
-         
-
-                </View>
-                    <TextInput 
-                    style={styles.msgBox}
-                    placeholder="Message"
-                    numberOfLines={10}
-                    multiline={true}
-                    numberOfLines={10}
-                    placeholderTextColor="#fff"
-                    underlineColorAndroid = 'transparent'    
-                />
+        
+        </View>
+        <TextInput 
+        style={styles.msgBox}
+        placeholder="Message" numberOfLines={10} multiline={true} numberOfLines={10} placeholderTextColor="#fff" underlineColorAndroid = 'transparent'/>
                 
-                <TouchableOpacity style={styles.btn}>
-                    <Text style={styles.loginText}> 
-                         Submit
-                    </Text>
-                    </TouchableOpacity>
-                    </KeyboardAvoidingView>
-                    </ScrollView>
-                </SafeAreaView>
-                </LinearGradient>
+        <TouchableOpacity style={styles.btn}>
+        <Text style={styles.loginText}>Submit</Text>
+        </TouchableOpacity>
+        </KeyboardAvoidingView>
+        </ScrollView>
+        </SafeAreaView>
+        </LinearGradient>
          )
      }
  }
@@ -217,7 +190,12 @@ import LinearGradient from "react-native-linear-gradient";
     fontWeight: 'bold',
     marginTop: 20,
 },
- 
+contactImage:{
+  width:80,
+  height: 70,
+  marginTop: 20,
+  padding:10,
+},
 });
 
 export default ContactScreen

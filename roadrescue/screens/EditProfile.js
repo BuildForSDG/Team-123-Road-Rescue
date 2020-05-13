@@ -35,33 +35,32 @@ Icon.loadFont();
             style={{flex:1}}
             colors={[
               '#D7816A',
-              '#BD4F6C'    
-            ]}
-          >
-                 <SafeAreaView style={styles.safeArea}>
-               <TouchableOpacity 
-                style={{alignItems:'flex-start', margin:18}}
-                onPress={()=>this.props.navigation.openDrawer()}>   
-                <Icon name="bars" size={30} color="#fff"/>
-                    </TouchableOpacity>
+              '#BD4F6C',    
+            ]}>
+      <SafeAreaView style={styles.safeArea}>
+        <TouchableOpacity 
+        style={{alignItems:'flex-start', margin:18}}
+        onPress={()=>this.props.navigation.openDrawer()}>   
+        <Icon name="bars" size={30} color="#fff"/>
+        </TouchableOpacity>
                    
-                    <ScrollView>
-                    <KeyboardAvoidingView behavior='padding'
-                    style={styles.wrapper}>
-                        <View style={styles.cardStyle}>
-                        <Image
-                        style={styles.image}
-                        source={user}
-                    />    
-                        </View>
+          <ScrollView>
+            <KeyboardAvoidingView style={styles.wrapper}>
+              <View style={styles.cardStyle}>
+                <Image
+                style={styles.image}
+                source={user}
+                />    
+                </View>
                         
-                <Text style={styles.conText}>
-                   Edit your profile
-                </Text>
+            <Text style={styles.conText}>Edit your profile</Text>
                  
         <View style={[styles.card2]}>   
         <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
-        <Icon name="user" size={30} style={{padding:10, marginTop:10, color:'#fff'}}  /> 
+        <Icon 
+        name="user" size={30} 
+        style={{padding:10, marginTop:10, color:'#fff'}}  
+        /> 
         <Madoka
           style={styles.inputFlex2}
           label={"Full name"}
@@ -71,7 +70,11 @@ Icon.loadFont();
         />
         </View>
         <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
-        <Icon name="envelope" size={30} style={{padding:10, marginTop:10, color:'#fff'}}  /> 
+        <Icon 
+        name="envelope" 
+        size={30} 
+        style={{padding:10, marginTop:10, color:'#fff'}}  
+        /> 
         <Madoka
           style={styles.inputFlex2}
           label={"email"}
@@ -81,7 +84,11 @@ Icon.loadFont();
         />
         </View>
         <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
-        <Icon name="phone" size={30} style={{padding:10, marginTop:10, color:'#fff'}}  /> 
+        <Icon 
+        name="phone" 
+        size={30} 
+        style={{padding:10, marginTop:10, color:'#fff'}}  
+        /> 
         <Madoka
           style={styles.inputFlex2}
           label={"phone"}
@@ -91,7 +98,10 @@ Icon.loadFont();
         />
         </View>
         <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
-        <Icon name="map-marker" size={30} style={{padding:10, marginTop:10, color:'#fff'}}  /> 
+        <Icon 
+        name="map-marker" 
+        size={30} style={{padding:10, marginTop:10, color:'#fff'}}  
+        /> 
         <Madoka
           style={styles.inputFlex2}
           label={"address"}
@@ -102,9 +112,12 @@ Icon.loadFont();
         </View>
 
         <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
-        <Icon name="lock" size={30} style={{padding:10, marginTop:10, color:'#fff'}}  /> 
+        <Icon 
+        name="lock" 
+        size={30} style={{padding:10, marginTop:10, color:'#fff'}}  
+        /> 
         <Madoka
-            secureTextEntry={this.state.hidePassword}
+          secureTextEntry={this.state.hidePassword}
           style={styles.inputFlex2}
           label={"password"}
           borderColor={"#fff"}
@@ -116,18 +129,15 @@ Icon.loadFont();
              style = {styles.btnImage} />
           </TouchableOpacity>
         </View>
-                </View>
+        </View>
                      
-                <TouchableOpacity style={styles.btn}>
-                    <Text style={styles.loginText}> 
-                        Save
-                    </Text>
-                    </TouchableOpacity>
-                     
-                    </KeyboardAvoidingView>
-                    </ScrollView>
-                </SafeAreaView>
-                </LinearGradient>
+        <TouchableOpacity style={styles.btn}>
+        <Text style={styles.loginText}>Save</Text>
+        </TouchableOpacity> 
+        </KeyboardAvoidingView>
+          </ScrollView>
+          </SafeAreaView>
+      </LinearGradient>
          );
      };
  };

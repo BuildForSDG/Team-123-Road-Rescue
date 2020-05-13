@@ -10,18 +10,16 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { SafeAreaView } from 'react-navigation';
  Icon.loadFont();
 
- class AboutScreen extends Component{
+ class AboutScreen extends Component {
         static navigationOptions = {
             drawerLabel:() => null
        }
-     render(){
+     render() {
          return(
              <SafeAreaView style={styles.container}>
-               <TouchableOpacity 
-                style={{alignItems:'flex-start', margin:18}}
-                onPress={()=>this.props.navigation.openDrawer()}>   
+               <TouchableOpacity style={{alignItems:'flex-start', margin:18}} onPress={()=>this.props.navigation.openDrawer()}>   
                 <Icon name="bars" size={30} color="#cc5500"/>
-                    </TouchableOpacity>
+                </TouchableOpacity>
                     <View style={{flex:1, alignItems:'center', justifyContent:'center'}}>
                         <Text>About screen</Text>
                     </View>
@@ -34,11 +32,9 @@ import { SafeAreaView } from 'react-navigation';
     container:{
         flex:1,
     },
-
     safeArea:{
         flex:1,
-    }
-     
+    },    
 });
 
 export default AboutScreen

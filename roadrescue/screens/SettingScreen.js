@@ -46,13 +46,13 @@ export default class SettingScreen extends React.Component {
           title: <Text style={{padding:10}} 
           onPress={()=>this.props.navigation.navigate('Edit Profile')}>Edit Profile</Text>,
           renderAccessory: () => (
-            <Image source={user} style={{width:25, height:25}}/>
+            <Image source={user} style={styles.imageStyle}/>
           ),
         },
         {
           title: <Text style={{padding:10}}>Traffic report history</Text>,
           renderAccessory: () => (
-            <Image source={history} style={{width:25, height:25}}/>
+            <Image source={history} style={styles.imageStyle}/>
           ),
         },
          
@@ -66,25 +66,25 @@ export default class SettingScreen extends React.Component {
         {
           title: <Text style={{padding:10}}  onPress={()=>this.props.navigation.navigate('About us')}>About us</Text>,
           renderAccessory: () => (
-            <Image source={curve} style={{width:25, height:25}}/>
+            <Image source={curve} style={styles.imageStyle}/>
           ),
         },
         {
           title: <Text style={{padding:10}}>Notifications</Text>,
           renderAccessory: () => (
-            <Image source={bell} style={{width:25, height:25}}/>
+            <Image source={bell} style={styles.imageStyle}/>
           ),
         },
         {
           title: <Text style={{padding:10}}>Privacy policy</Text>,
           renderAccessory: () => (
-            <Image source={terms} style={{width:25, height:25}}/>
+            <Image source={terms} style={styles.imageStyle}/>
           ),
         },
         {
           title: <Text style={{padding:10}}>Terms of use</Text>,
           renderAccessory: () => (
-            <Image source={privacy} style={{width:25, height:25}}/>
+            <Image source={privacy} style={styles.imageStyle}/>
           ),
         },
          
@@ -101,13 +101,13 @@ export default class SettingScreen extends React.Component {
           <Text style={styles.navBarTitle}>Settings</Text>
         </View>
         <TouchableOpacity 
-                style={{alignSelf:'flex-start', margin:18}}
-                onPress={()=>this.props.navigation.openDrawer()}>   
-                <Icon name="bars" size={30} color="#8c231a"/>
-                    </TouchableOpacity>
+          style={{alignSelf:'flex-start', margin:18}}
+          onPress={()=>this.props.navigation.openDrawer()}>   
+          <Icon name="bars" size={30} color="#8c231a"/>
+        </TouchableOpacity>
         <SettingsScreen
           data={this.settingsData}
-          globalTextStyle={{ fontFamily }}
+          globalTextStyle={{fontFamily}}
           scrollViewProps={{
             refreshControl: (
               <RefreshControl
@@ -170,4 +170,8 @@ const styles = StyleSheet.create({
     color: '#999',
     fontSize: 14,
   },
+  imageStyle:{
+    width:25, 
+    height:25,
+  }
 })

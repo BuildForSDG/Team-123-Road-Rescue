@@ -26,17 +26,11 @@ export default class Article extends React.Component {
         <Card
           featuredTitle={title}
           featuredTitleStyle={featuredTitleStyle}
-          image={{
-            uri: urlToImage || defaultImg
-          }}
+          image={{uri: urlToImage || defaultImg}}
         >
-          <Text style={{ marginBottom: 10 }}>
-            {description || 'Read More..'}
-          </Text>
+        <Text style={{ marginBottom: 10 }}>{description || 'Read More..'}</Text>
           <Divider style={{backgroundColor: '#dfe6e9'}} />
-          <View
-            style={{flexDirection:'row', justifyContent: 'space-between' }}
-          >
+          <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
             <Text style={noteStyle}>{source.name.toUpperCase()}</Text>
             <Text style={noteStyle}>{time}</Text>
           </View>

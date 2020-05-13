@@ -16,7 +16,7 @@ import LinearGradient from "react-native-linear-gradient";
  Icon.loadFont();
  
 
- class LoginScreen extends Component{
+ class LoginScreen extends Component {
   constructor(){
     super();
     this.state = {hidePassword: true};
@@ -25,7 +25,7 @@ import LinearGradient from "react-native-linear-gradient";
     this.setState({hidePassword: !this.state.hidePassword});
   }
 
-     render(){
+     render() {
          return (
             <LinearGradient
             style={{flex:1}}
@@ -33,30 +33,26 @@ import LinearGradient from "react-native-linear-gradient";
               '#D7816A',
               '#BD4F6C'
             ]}>
-                 <SafeAreaView style={styles.safeArea}>
-               <TouchableOpacity 
-                style={{alignItems:'flex-start', margin:18}}
-                onPress={()=>this.props.navigation.openDrawer()}>   
-                <Icon name="bars" size={30} color="#fff"/>
-                    </TouchableOpacity>
+      <SafeAreaView style={styles.safeArea}>
+        <TouchableOpacity 
+        style={{alignItems:'flex-start', margin:18}}
+        onPress={()=>this.props.navigation.openDrawer()}>   
+        <Icon name="bars" size={30} color="#fff"/>
+        </TouchableOpacity>
                    
-                    <ScrollView>
-                    <KeyboardAvoidingView behavior="padding"
-                    style={styles.wrapper}>
-                       <View style={styles.cardStyle}> 
-                         <Image
-                        style={{ width:70,height: 70,
-                          marginTop: 20,padding:20}}
-                        source={medication}
-                       />
-                    </View>
-                <Text style={styles.conText}>
-                    Welcome back, sign in
-                </Text>
+      <ScrollView>
+        <KeyboardAvoidingView behavior="padding" style={styles.wrapper}>
+        <View style={styles.cardStyle}> 
+        <Image style={{width:70,height: 70, marginTop: 20,padding:20}} source={medication}/>
+        </View>
+        <Text style={styles.conText}>Welcome back, sign in</Text>
                  
         <View style={[styles.card2]}>   
         <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
-        <Icon name="envelope" size={30} style={{padding:10, marginTop:10, color:'#fff'}}  /> 
+        <Icon 
+        name="envelope" 
+        size={30} style={{padding:10, marginTop:10, color:'#fff'}} 
+        /> 
         <Madoka
           style={styles.inputFlex2}
           label={"email"}
@@ -67,39 +63,36 @@ import LinearGradient from "react-native-linear-gradient";
         </View>
 
         <View style={{flex:1, flexDirection:'row',flexWrap:'wrap',justifyContent:'space-around'}}>
-        <Icon name="lock" size={30} style={{padding:10, marginTop:10, color:'#fff'}}  /> 
+        <Icon 
+        name="lock" size={30} 
+        style={{padding:10, marginTop:10, color:'#fff'}}  
+        /> 
         <Madoka
-            secureTextEntry={this.state.hidePassword}
+          secureTextEntry={this.state.hidePassword}
           style={styles.inputFlex2}
-          label={"password"}
+          label={'password'}
           borderColor={"#fff"}
           labelStyle={{ color: "#fff" }}
           inputStyle={{ color: "#fff" }}
         />
-         <TouchableOpacity activeOpacity = { 0.8 } style = { styles.visibilityBtn } onPress = { this.managePasswordVisibility }>
+         <TouchableOpacity activeOpacity = { 0.8 } style = { styles.visibilityBtn } onPress = {this.managePasswordVisibility}>
             <Image source = {(this.state.hidePassword ) ? require('../assets/images/show.png') : require('../assets/images/hide.png') }
-             style = { styles.btnImage } />
+             style = {styles.btnImage} />
           </TouchableOpacity>
         </View>
-
-                </View>
+        </View>
                      
-                <TouchableOpacity style={styles.btn}>
-                    <Text style={styles.loginText}> 
-                        sign in
-                    </Text>
-                    </TouchableOpacity>
-                    <Text style={styles.logText}
-                    onPress={()=>this.props.navigation.navigate('Register')}>
-                   Don't have an account? Sign up
-                </Text>
-                    </KeyboardAvoidingView>
-                    </ScrollView>
-                </SafeAreaView>
-                </LinearGradient>
+        <TouchableOpacity style={styles.btn}>
+        <Text style={styles.loginText}>sign in</Text>
+        </TouchableOpacity>
+        <Text style={styles.logText}onPress={()=>this.props.navigation.navigate('Register')}>Don't have an account? Sign up</Text>
+        </KeyboardAvoidingView>
+        </ScrollView>
+        </SafeAreaView>
+        </LinearGradient>
          )
-     }
- }
+        }
+        }
 
  const styles = StyleSheet.create({
     wrapper:{
@@ -145,8 +138,7 @@ import LinearGradient from "react-native-linear-gradient";
     padding: 20,
     marginTop: 20,
     borderRadius:25,
-    backgroundColor: '#A40606'
-    
+    backgroundColor: '#A40606'  
 },
 content: {
     paddingBottom: 300,

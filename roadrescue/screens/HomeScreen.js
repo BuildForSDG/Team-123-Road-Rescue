@@ -16,29 +16,29 @@ import crash from '../assets/images/crash.png';
  Icon.loadFont();
 
  class HomeScreen extends Component{
-    constructor(props) {
-        super(props);
-        this.state = { articles: [], refreshing: true };
-        this.fetchNews = this.fetchNews.bind(this);
+  constructor(props) {
+    super(props);
+    this.state = { articles: [], refreshing: true };
+    this.fetchNews = this.fetchNews.bind(this);
       }
-      componentDidMount() {
-        this.fetchNews();
-       }
+  componentDidMount() {
+    this.fetchNews();
+  }
     
-      fetchNews() {
-        getNews()
-          .then(articles => this.setState({ articles, refreshing: false }))
-          .catch(() => this.setState({ refreshing: false }));
-      }
+  fetchNews() {
+    getNews()
+    .then(articles => this.setState({ articles, refreshing: false }))
+    .catch(() => this.setState({ refreshing: false }));
+  }
     
-      handleRefresh() {
-        this.setState(
-          {
-            refreshing: true
-        },
-          () => this.fetchNews()
-        );
-      }
+  handleRefresh() {
+    this.setState({
+    refreshing: true
+    },
+    () => this.fetchNews()
+    );
+  }
+
      render(){
             return (
                 <View>
@@ -50,7 +50,7 @@ import crash from '../assets/images/crash.png';
             
                <TouchableOpacity 
                 style={{ alignSelf:'flex-start', marginTop:-10, margin:18, }}
-                onPress={()=>this.props.navigation.openDrawer()}>   
+                onPress={()=> this.props.navigation.openDrawer()}>   
                 <Icon name="bars" size={30} color="#fff"/>
                     </TouchableOpacity>
 

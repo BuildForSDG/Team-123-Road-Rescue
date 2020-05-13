@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import{
+import {
   StyleSheet,
   View,
   Text,
@@ -17,45 +17,37 @@ Icon.loadFont();
  
 
  class RegisterScreen extends Component{
-    constructor()
-    {
+    constructor(){
       super();
       this.state = { hidePassword: true }
     }
-    managePasswordVisibility = () =>
-    {
+    managePasswordVisibility = () =>{
       this.setState({ hidePassword: !this.state.hidePassword });
     }
 
      render(){
          return (
-            <LinearGradient
+          <LinearGradient
             style={{flex:1}}
             colors={[
               "#D7816A",
               "#BD4F6C"    
-            ]}
-          >
-                 <SafeAreaView style={styles.safeArea}>
-               <TouchableOpacity 
-                style={{alignItems:'flex-start', margin:18}}
-                onPress={()=>this.props.navigation.openDrawer()}>   
-                <Icon name="bars" size={30} color="#fff"/>
-                    </TouchableOpacity>
+            ]}>
+          <SafeAreaView style={styles.safeArea}>
+            <TouchableOpacity 
+              style={{alignItems:'flex-start', margin:18}}
+              onPress={()=>this.props.navigation.openDrawer()}>   
+              <Icon name="bars" size={30} color="#fff"/>
+            </TouchableOpacity>
                    
-                    <ScrollView>
-                    <KeyboardAvoidingView
-                    style={styles.wrapper}>
-                        <View style={styles.cardStyle}>
-                        <Image
-                      style={{width:70,height: 70,marginTop: 20,padding:20}}
-                        source={medication}
-                    />    
-                        </View>
+          <ScrollView>
+            <KeyboardAvoidingView
+            style={styles.wrapper}>
+            <View style={styles.cardStyle}>
+            <Image style={{width:70,height: 70,marginTop: 20,padding:20}} source={medication}/>    
+          </View>
                         
-                <Text style={styles.conText}>
-                   Welcome, Sign up
-                </Text>
+          <Text style={styles.conText}>Welcome, Sign up</Text>
                  
         <View style={[styles.card2]}>   
         <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
