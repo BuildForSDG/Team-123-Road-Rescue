@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {
-  StyleSheet,
   View,
   Text,
   TouchableOpacity,
@@ -13,6 +12,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {SafeAreaView} from 'react-navigation';
 import {Madoka} from 'react-native-textinput-effects';
 import LinearGradient from 'react-native-linear-gradient';
+import {styles} from './styles/Style';
 Icon.loadFont();
 
 class RegisterScreen extends Component {
@@ -29,7 +29,7 @@ class RegisterScreen extends Component {
       <LinearGradient style={{flex: 1}} colors={['#D7816A', '#BD4F6C']}>
         <SafeAreaView style={styles.safeArea}>
           <TouchableOpacity
-            style={{alignItems: 'flex-start', margin: 18}}
+            style={styles.menuContainer}
             onPress={() => this.props.navigation.openDrawer()}>
             <Icon name="bars" size={30} color="#fff" />
           </TouchableOpacity>
@@ -37,27 +37,14 @@ class RegisterScreen extends Component {
           <ScrollView>
             <KeyboardAvoidingView style={styles.wrapper}>
               <View style={styles.cardStyle}>
-                <Image
-                  style={{width: 70, height: 70, marginTop: 20, padding: 20}}
-                  source={medication}
-                />
+                <Image style={styles.contactImage} source={medication} />
               </View>
 
               <Text style={styles.conText}>Welcome, Sign up</Text>
 
               <View style={[styles.card2]}>
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-around',
-                  }}>
-                  <Icon
-                    name="user"
-                    size={30}
-                    style={{padding: 10, marginTop: 10, color: '#fff'}}
-                  />
+                <View style={styles.madokaContainer}>
+                  <Icon name="user" size={30} style={styles.ImageStyle} />
                   <Madoka
                     style={styles.inputFlex2}
                     label={'Full name'}
@@ -73,11 +60,7 @@ class RegisterScreen extends Component {
                     flexWrap: 'wrap',
                     justifyContent: 'space-around',
                   }}>
-                  <Icon
-                    name="envelope"
-                    size={30}
-                    style={{padding: 10, marginTop: 10, color: '#fff'}}
-                  />
+                  <Icon name="envelope" size={30} style={styles.ImageStyle} />
                   <Madoka
                     style={styles.inputFlex2}
                     label={'email'}
@@ -93,11 +76,7 @@ class RegisterScreen extends Component {
                     flexWrap: 'wrap',
                     justifyContent: 'space-around',
                   }}>
-                  <Icon
-                    name="phone"
-                    size={30}
-                    style={{padding: 10, marginTop: 10, color: '#fff'}}
-                  />
+                  <Icon name="phone" size={30} style={styles.ImageStyle} />
                   <Madoka
                     style={styles.inputFlex2}
                     label={'phone'}
@@ -113,11 +92,7 @@ class RegisterScreen extends Component {
                     flexWrap: 'wrap',
                     justifyContent: 'space-around',
                   }}>
-                  <Icon
-                    name="map-marker"
-                    size={30}
-                    style={{padding: 10, marginTop: 10, color: '#fff'}}
-                  />
+                  <Icon name="map-marker" size={30} style={styles.ImageStyle} />
                   <Madoka
                     style={styles.inputFlex2}
                     label={'Address'}
@@ -134,11 +109,7 @@ class RegisterScreen extends Component {
                     flexWrap: 'wrap',
                     justifyContent: 'space-around',
                   }}>
-                  <Icon
-                    name="lock"
-                    size={30}
-                    style={{padding: 10, marginTop: 10, color: '#fff'}}
-                  />
+                  <Icon name="lock" size={30} style={styles.ImageStyle} />
                   <Madoka
                     secureTextEntry={this.state.hidePassword}
                     style={styles.inputFlex2}
@@ -178,120 +149,5 @@ class RegisterScreen extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingLeft: 40,
-    paddingRight: 40,
-  },
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingLeft: 40,
-    paddingRight: 40,
-  },
-  safeArea: {
-    flex: 1,
-  },
-  conText: {
-    color: '#fff',
-    fontSize: 17,
-    fontWeight: 'bold',
-    marginTop: 20,
-  },
-  logText: {
-    color: '#fff',
-    fontSize: 15,
-    fontWeight: 'bold',
-    marginTop: 20,
-  },
-  loginText: {
-    color: '#fff',
-    fontSize: 15,
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-  },
-  ImageStyle: {
-    padding: 10,
-    margin: 5,
-    height: 25,
-    width: 25,
-    resizeMode: 'stretch',
-    alignItems: 'center',
-  },
-  btn: {
-    alignSelf: 'stretch',
-    alignItems: 'center',
-    padding: 20,
-    marginTop: 20,
-    borderRadius: 25,
-    backgroundColor: '#A40606',
-  },
-  image: {
-    width: 70,
-    height: 70,
-    marginTop: 20,
-    padding: 20,
-  },
-  content: {
-    paddingBottom: 300,
-  },
-  card1: {
-    paddingVertical: 16,
-  },
-  card2: {
-    padding: 14,
-    alignSelf: 'stretch',
-    marginTop: 20,
-  },
-  input: {
-    marginTop: 4,
-  },
-  inputFlex: {
-    marginTop: 4,
-    alignSelf: 'stretch',
-    width: 150,
-  },
-  inputFlex2: {
-    alignSelf: 'stretch',
-    width: 250,
-  },
-  title: {
-    paddingBottom: 16,
-    textAlign: 'center',
-    color: '#404d5b',
-    fontSize: 20,
-    fontWeight: 'bold',
-    opacity: 0.8,
-  },
-  cardStyle: {
-    flex: 1,
-    alignItems: 'center',
-    width: 100,
-    height: 100,
-    borderTopLeftRadius: 100,
-    borderTopRightRadius: 100,
-    borderBottomLeftRadius: 100,
-    borderBottomRightRadius: 100,
-    backgroundColor: '#fff',
-  },
-  visibilityBtn: {
-    position: 'absolute',
-    right: 15,
-    height: 40,
-    width: 35,
-    padding: 3,
-  },
-  btnImage: {
-    resizeMode: 'contain',
-    height: '100%',
-    width: '100%',
-    marginTop: 7,
-  },
-});
 
 export default RegisterScreen;

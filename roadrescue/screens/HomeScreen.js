@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {
-  StyleSheet,
   TouchableOpacity,
   View,
   StatusBar,
@@ -13,6 +12,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {getNews} from '../src/components/News';
 import Article from '../src/components/Article';
 import crash from '../assets/images/crash.png';
+import {styles} from './styles/Style';
 Icon.loadFont();
 
 class HomeScreen extends Component {
@@ -40,10 +40,8 @@ class HomeScreen extends Component {
       <View>
         <View style={styles.homeContainer}>
           <StatusBar barStyle="light-content" backgroundColor="#8c231a" />
-          <View style={{alignSelf: 'center', marginTop: 10, padding: 44}}>
-            <Text style={{color: '#fff', fontSize: 20, fontWeight: 'bold'}}>
-              Home
-            </Text>
+          <View style={styles.subHomeContainer}>
+            <Text style={styles.containerText}>Home</Text>
           </View>
 
           <TouchableOpacity
@@ -53,18 +51,9 @@ class HomeScreen extends Component {
           </TouchableOpacity>
 
           <View style={styles.container}>
-            <Image
-              source={crash}
-              style={{alignSelf: 'center', width: 70, height: 70}}
-            />
+            <Image source={crash} style={styles.imageIcon} />
             <TouchableOpacity
-              style={{
-                alignSelf: 'center',
-                marginTop: 10,
-                backgroundColor: '#8c231a',
-                width: 150,
-                padding: 10,
-              }}
+              style={styles.buttonTouch}
               onPress={() => this.props.navigation.navigate('Report crash')}>
               <Text style={styles.crashText}>Report crash</Text>
             </TouchableOpacity>
@@ -83,36 +72,5 @@ class HomeScreen extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    height: 150,
-    padding: 10,
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5,
-    backgroundColor: '#F5FFFA',
-  },
-  homeContainer: {
-    backgroundColor: '#8c231a',
-    padding: 10,
-  },
-  menuIcon: {
-    alignSelf: 'flex-start',
-    marginTop: -10,
-    margin: 18,
-  },
-  crashText: {
-    textAlign: 'center',
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 18,
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5,
-  },
-});
 
 export default HomeScreen;

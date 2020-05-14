@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
+import {styles} from './styles/Style';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {SafeAreaView} from 'react-navigation';
@@ -11,7 +12,7 @@ class AboutScreen extends Component {
   };
   render() {
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.aboutContainer}>
         <TouchableOpacity
           style={styles.menuContainer}
           onPress={() => this.props.navigation.openDrawer()}>
@@ -24,15 +25,5 @@ class AboutScreen extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  menuContainer: {
-    alignItems: 'flex-start',
-    margin: 18,
-  },
-  container: {
-    flex: 1,
-  },
-});
 
 export default AboutScreen;
