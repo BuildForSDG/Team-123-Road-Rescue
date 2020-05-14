@@ -182,7 +182,6 @@ class ReportCrash extends Component {
                 placeholder="Message"
                 numberOfLines={10}
                 multiline={true}
-                numberOfLines={10}
                 placeholderTextColor="#fff"
                 underlineColorAndroid="transparent"
               />

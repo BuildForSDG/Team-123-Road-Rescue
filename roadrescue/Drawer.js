@@ -26,13 +26,7 @@ class Drawer extends Component {
 
 const CustomDrawerComponent = (props) => (
   <SafeAreaView>
-    <View
-      style={{
-        justifyContent: 'center',
-        height: 100,
-        padding: 20,
-        marginTop: 10,
-      }}>
+    <View style={styles.container}>
       <Image style={styles.drawerImage} source={medication} />
     </View>
     <View>
@@ -106,7 +100,10 @@ const App2 = createAppContainer(DrawerNavigator);
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    justifyContent: 'center',
+    height: 100,
+    padding: 20,
+    marginTop: 10,
   },
   drawerImage: {
     height: 100,
@@ -114,9 +111,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     padding: 10,
   },
-  image: {
-    width: 50,
-    height: 50,
+  myImage: {
+    width: 25,
+    height: 25,
   },
   label: {
     padding: 15,

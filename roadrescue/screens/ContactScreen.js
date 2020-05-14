@@ -22,7 +22,7 @@ class ContactScreen extends Component {
       <LinearGradient style={{flex: 1}} colors={['#D7816A', '#BD4F6C']}>
         <SafeAreaView style={styles.safeArea}>
           <TouchableOpacity
-            style={{alignItems: 'flex-start', margin: 18}}
+            style={styles.menuItem}
             onPress={() => this.props.navigation.openDrawer()}>
             <Icon name="bars" size={30} color="#fff" />
           </TouchableOpacity>
@@ -35,18 +35,8 @@ class ContactScreen extends Component {
               <Text style={styles.conText}>Contact us</Text>
 
               <View style={[styles.card2]}>
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-around',
-                  }}>
-                  <Icon
-                    name="user"
-                    size={30}
-                    style={{padding: 10, marginTop: 10, color: '#fff'}}
-                  />
+                <View style={styles.container}>
+                  <Icon name="user" size={30} style={styles.ImageStyle} />
                   <Madoka
                     style={styles.inputFlex2}
                     label={'Full name'}
@@ -56,13 +46,7 @@ class ContactScreen extends Component {
                   />
                 </View>
 
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-around',
-                  }}>
+                <View style={styles.container}>
                   <Icon
                     name="envelope"
                     size={30}
@@ -72,7 +56,7 @@ class ContactScreen extends Component {
                     style={styles.inputFlex2}
                     label={'email'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
                     inputStyle={{color: '#fff'}}
                   />
                 </View>
@@ -82,7 +66,6 @@ class ContactScreen extends Component {
                 placeholder="Message"
                 numberOfLines={10}
                 multiline={true}
-                numberOfLines={10}
                 placeholderTextColor="#fff"
                 underlineColorAndroid="transparent"
               />
@@ -99,14 +82,21 @@ class ContactScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingLeft: 40,
-    paddingRight: 40,
-  },
   container: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    marginTop: 10,
+  },
+  menuItem: {
+    alignItems: 'flex-start',
+    margin: 18,
+  },
+  madokaStyle: {
+    color: '#fff',
+  },
+  wrapper: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -127,6 +117,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 1,
     borderBottomLeftRadius: 1,
     padding: 10,
+    marginLeft: 50,
     fontSize: 16,
   },
   conText: {
@@ -145,8 +136,9 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 2,
     borderBottomRightRadius: 2,
     borderBottomLeftRadius: 2,
-    marginTop: 20,
-    padding: 10,
+    marginTop: 10,
+    padding: 20,
+    marginStart: 20,
     textAlignVertical: 'top',
   },
   loginText: {
@@ -157,11 +149,8 @@ const styles = StyleSheet.create({
   },
   ImageStyle: {
     padding: 10,
-    margin: 5,
-    height: 25,
-    width: 25,
-    resizeMode: 'stretch',
-    alignItems: 'center',
+    marginTop: 10,
+    color: '#fff',
   },
   btn: {
     alignSelf: 'stretch',
@@ -171,22 +160,12 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     backgroundColor: '#A40606',
   },
-  card1: {
-    paddingVertical: 16,
-  },
   card2: {
-    padding: 14,
+    padding: 10,
     alignSelf: 'stretch',
     marginTop: 20,
   },
-  input: {
-    marginTop: 4,
-  },
-  inputFlex: {
-    marginTop: 4,
-    alignSelf: 'stretch',
-    width: 150,
-  },
+
   inputFlex2: {
     alignSelf: 'stretch',
     width: 250,
