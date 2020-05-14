@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     padding: 20,
   },
-  labelColor:{
-  color: '#fff',
+  labelColor: {
+    color: '#fff',
   },
   textInput: {
     alignSelf: 'stretch',
