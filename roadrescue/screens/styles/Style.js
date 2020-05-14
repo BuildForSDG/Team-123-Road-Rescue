@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     padding: 20,
   },
-    labelColor:{
-    color: '#fff',
+  labelColor:{
+  color: '#fff',
   },
   textInput: {
     alignSelf: 'stretch',
@@ -185,14 +185,6 @@ const styles = StyleSheet.create({
     height: 70,
     marginTop: 20,
     padding: 10,
-  },
-  title: {
-    paddingBottom: 16,
-    textAlign: 'center',
-    color: '#404d5b',
-    fontSize: 20,
-    fontWeight: 'bold',
-    opacity: 0.8,
   },
   visibilityBtn: {
     position: 'absolute',
