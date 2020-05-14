@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,89 +9,100 @@ import {
   RefreshControl,
   TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'
-import user from '../assets/images/user.png'; 
-import history from '../assets/images/history.png'; 
-import curve from '../assets/images/curve.png'; 
-import bell from '../assets/images/bell.png'; 
-import terms from '../assets/images/terms.png'; 
-import privacy from '../assets/images/privacy.png'; 
+import Icon from 'react-native-vector-icons/FontAwesome';
+import user from '../assets/images/user.png';
+import history from '../assets/images/history.png';
+import curve from '../assets/images/curve.png';
+import bell from '../assets/images/bell.png';
+import terms from '../assets/images/terms.png';
+import privacy from '../assets/images/privacy.png';
 import {SettingsScreen} from 'react-native-settings-screen';
 
-const fontFamily = Platform.OS === 'ios' ? 'Avenir' : 'sans-serif'
+const fontFamily = Platform.OS === 'ios' ? 'Avenir' : 'sans-serif';
 
 const renderHero = () => (
   <View style={styles.heroContainer}>
-    <Image source={require('../assets/images/medication.png')} style={styles.heroImage} />
-    <View style={{ flex: 1 }}>
+    <Image
+      source={require('../assets/images/medication.png')}
+      style={styles.heroImage}
+    />
+    <View style={{flex: 1}}>
       <Text style={styles.heroTitle}>Road Rescue</Text>
       <Text style={styles.heroSubtitle}>Reduce road injuries and deaths</Text>
     </View>
   </View>
-)
+);
 
 export default class SettingScreen extends React.Component {
   state = {
     refreshing: false,
-  }
+  };
 
   settingsData = [
-    { type: 'CUSTOM_VIEW', key: 'hero', render: renderHero },
+    {type: 'CUSTOM_VIEW', key: 'hero', render: renderHero},
     {
       type: 'SECTION',
       header: 'Personal Details'.toUpperCase(),
-       
+
       rows: [
         {
-          title: <Text style={{padding:10}} 
-          onPress={()=>this.props.navigation.navigate('Edit Profile')}>Edit Profile</Text>,
+          title: (
+            <Text
+              style={{padding: 10}}
+              onPress={() => this.props.navigation.navigate('Edit Profile')}>
+              Edit Profile
+            </Text>
+          ),
           renderAccessory: () => (
-            <Image source={user} style={styles.imageStyle}/>
+            <Image source={user} style={styles.imageStyle} />
           ),
         },
         {
-          title: <Text style={{padding:10}}>Traffic report history</Text>,
+          title: <Text style={{padding: 10}}>Traffic report history</Text>,
           renderAccessory: () => (
-            <Image source={history} style={styles.imageStyle}/>
+            <Image source={history} style={styles.imageStyle} />
           ),
         },
-         
       ],
     },
-     
+
     {
       type: 'SECTION',
       header: 'Application details'.toUpperCase(),
       rows: [
         {
-          title: <Text style={{padding:10}}  onPress={()=>this.props.navigation.navigate('About us')}>About us</Text>,
+          title: (
+            <Text
+              style={{padding: 10}}
+              onPress={() => this.props.navigation.navigate('About us')}>
+              About us
+            </Text>
+          ),
           renderAccessory: () => (
-            <Image source={curve} style={styles.imageStyle}/>
+            <Image source={curve} style={styles.imageStyle} />
           ),
         },
         {
-          title: <Text style={{padding:10}}>Notifications</Text>,
+          title: <Text style={{padding: 10}}>Notifications</Text>,
           renderAccessory: () => (
-            <Image source={bell} style={styles.imageStyle}/>
+            <Image source={bell} style={styles.imageStyle} />
           ),
         },
         {
-          title: <Text style={{padding:10}}>Privacy policy</Text>,
+          title: <Text style={{padding: 10}}>Privacy policy</Text>,
           renderAccessory: () => (
-            <Image source={terms} style={styles.imageStyle}/>
+            <Image source={terms} style={styles.imageStyle} />
           ),
         },
         {
-          title: <Text style={{padding:10}}>Terms of use</Text>,
+          title: <Text style={{padding: 10}}>Terms of use</Text>,
           renderAccessory: () => (
-            <Image source={privacy} style={styles.imageStyle}/>
+            <Image source={privacy} style={styles.imageStyle} />
           ),
         },
-         
       ],
     },
-    
-  ]
+  ];
 
   render() {
     return (
@@ -100,10 +111,10 @@ export default class SettingScreen extends React.Component {
         <View style={styles.navBar}>
           <Text style={styles.navBarTitle}>Settings</Text>
         </View>
-        <TouchableOpacity 
-          style={{alignSelf:'flex-start', margin:18}}
-          onPress={()=>this.props.navigation.openDrawer()}>   
-          <Icon name="bars" size={30} color="#8c231a"/>
+        <TouchableOpacity
+          style={{alignSelf: 'flex-start', margin: 18}}
+          onPress={() => this.props.navigation.openDrawer()}>
+          <Icon name="bars" size={30} color="#8c231a" />
         </TouchableOpacity>
         <SettingsScreen
           data={this.settingsData}
@@ -113,19 +124,19 @@ export default class SettingScreen extends React.Component {
               <RefreshControl
                 refreshing={this.state.refreshing}
                 onRefresh={() => {
-                  this.setState({ refreshing: true })
-                  setTimeout(() => this.setState({ refreshing: false }), 3000)
+                  this.setState({refreshing: true});
+                  setTimeout(() => this.setState({refreshing: false}), 3000);
                 }}
               />
             ),
           }}
         />
       </View>
-    )
+    );
   }
 }
 
-const statusBarHeight = Platform.OS === 'ios' ? 35 : 0
+const statusBarHeight = Platform.OS === 'ios' ? 35 : 0;
 
 const styles = StyleSheet.create({
   container: {
@@ -170,8 +181,8 @@ const styles = StyleSheet.create({
     color: '#999',
     fontSize: 14,
   },
-  imageStyle:{
-    width:25, 
-    height:25,
-  }
-})
+  imageStyle: {
+    width: 25,
+    height: 25,
+  },
+});

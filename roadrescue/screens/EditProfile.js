@@ -56,10 +56,18 @@ Icon.loadFont();
             <Text style={styles.conText}>Edit your profile</Text>
                  
         <View style={[styles.card2]}>   
-        <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
+        <View 
+        style={{flex:1, 
+        flexDirection:'row', 
+        flexWrap:'wrap', 
+        justifyContent:'space-around'}}
+        >
         <Icon 
-        name="user" size={30} 
-        style={{padding:10, marginTop:10, color:'#fff'}}  
+        name="user" 
+        size={30} 
+        style={{padding:10, 
+        marginTop:10,
+        color:'#fff'}}  
         /> 
         <Madoka
           style={styles.inputFlex2}
@@ -69,7 +77,12 @@ Icon.loadFont();
           inputStyle={{ color: "#fff" }}
         />
         </View>
-        <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
+        <View 
+        style={{flex:1, 
+        flexDirection:'row', 
+        flexWrap:'wrap', 
+        justifyContent:'space-around'}}
+        >
         <Icon 
         name="envelope" 
         size={30} 
@@ -77,52 +90,72 @@ Icon.loadFont();
         /> 
         <Madoka
           style={styles.inputFlex2}
-          label={"email"}
-          borderColor={"#fff"}
-          labelStyle={{ color: "#fff" }}
+          label={'email'}
+          borderColor={'#fff'}
+          labelStyle={{ color: '#fff' }}
           inputStyle={{ color: "#fff" }}
         />
         </View>
-        <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
+        <View 
+        style={{flex:1, 
+        flexDirection:'row', 
+        flexWrap:'wrap', 
+        justifyContent:'space-around'}}
+        >
         <Icon 
         name="phone" 
+        size={30} 
+        style={{padding:10, 
+          marginTop:10, 
+          color:'#fff'}}  
+        /> 
+        <Madoka
+          style={styles.inputFlex2}
+          label={'phone'}
+          borderColor={'#fff'}
+          labelStyle={{ color: '#fff' }}
+          inputStyle={{ color: '#fff' }}
+        />
+        </View>
+        <View 
+        style={{flex:1, 
+        flexDirection:'row', 
+        flexWrap:'wrap', 
+        justifyContent:'space-around'}}
+        >
+        <Icon 
+        name="map-marker" 
+        size={30} 
+        style={{padding:10, 
+          marginTop:10, 
+          color:'#fff'}}  
+        /> 
+        <Madoka
+          style={styles.inputFlex2}
+          label={'address'}
+          borderColor={'#fff'}
+          labelStyle={{ color: '#fff' }}
+          inputStyle={{ color: '#fff' }}
+        />
+        </View>
+
+        <View style={{flex:1, 
+          flexDirection:'row', 
+          flexWrap:'wrap', 
+          justifyContent:'space-around'}}
+          >
+        <Icon 
+        name="lock" 
         size={30} 
         style={{padding:10, marginTop:10, color:'#fff'}}  
         /> 
         <Madoka
-          style={styles.inputFlex2}
-          label={"phone"}
-          borderColor={"#fff"}
-          labelStyle={{ color: "#fff" }}
-          inputStyle={{ color: "#fff" }}
-        />
-        </View>
-        <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
-        <Icon 
-        name="map-marker" 
-        size={30} style={{padding:10, marginTop:10, color:'#fff'}}  
-        /> 
-        <Madoka
-          style={styles.inputFlex2}
-          label={"address"}
-          borderColor={"#fff"}
-          labelStyle={{ color: "#fff" }}
-          inputStyle={{ color: "#fff" }}
-        />
-        </View>
-
-        <View style={{flex:1, flexDirection:'row', flexWrap:'wrap', justifyContent:'space-around'}}>
-        <Icon 
-        name="lock" 
-        size={30} style={{padding:10, marginTop:10, color:'#fff'}}  
-        /> 
-        <Madoka
           secureTextEntry={this.state.hidePassword}
           style={styles.inputFlex2}
-          label={"password"}
-          borderColor={"#fff"}
-          labelStyle={{color: "#fff"}}
-          inputStyle={{color: "#fff"}}
+          label={'password'}
+          borderColor={'#fff'}
+          labelStyle={{color: '#fff'}}
+          inputStyle={{color: '#fff'}}
         />
          <TouchableOpacity activeOpacity = {0.8} style = {styles.visibilityBtn} onPress = { this.managePasswordVisibility}>
             <Image source = {(this.state.hidePassword) ? require('../assets/images/show.png') : require('../assets/images/hide.png')}
