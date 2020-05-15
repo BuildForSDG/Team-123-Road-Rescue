@@ -100,7 +100,7 @@ const App2 = createAppContainer(DrawerNavigator);
 
 const styles = StyleSheet.create({
   drawSafe: {
-    backgroundColor: '#A40606',
+    backgroundColor: '#8c231a',
     padding: 10,
   },
   imageCard: {
