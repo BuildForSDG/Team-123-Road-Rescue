@@ -25,11 +25,11 @@ class Drawer extends Component {
 }
 
 const CustomDrawerComponent = (props) => (
-  <SafeAreaView>
-    <View style={styles.container}>
+  <SafeAreaView style={styles.drawSafe}>
+    <View style={styles.imageCard}>
       <Image style={styles.drawerImage} source={medication} />
     </View>
-    <View>
+    <View style={styles.drawerBody}>
       <DrawerItems {...props} />
     </View>
   </SafeAreaView>
@@ -99,15 +99,31 @@ const DrawerNavigator = createDrawerNavigator(
 const App2 = createAppContainer(DrawerNavigator);
 
 const styles = StyleSheet.create({
-  container: {
+  drawSafe: {
+    backgroundColor: '#A40606',
+    padding: 10,
+  },
+  imageCard: {
     justifyContent: 'center',
+    alignSelf: 'center',
+    marginTop: 10,
+    width: 100,
     height: 100,
-    padding: 20,
+    padding: 5,
+    marginBottom: 10,
+    borderTopLeftRadius: 100,
+    borderTopRightRadius: 100,
+    borderBottomLeftRadius: 100,
+    borderBottomRightRadius: 100,
+    backgroundColor: '#F5FFFA',
+  },
+  drawerBody: {
+    backgroundColor: '#fff',
     marginTop: 10,
   },
   drawerImage: {
-    height: 100,
-    width: 100,
+    height: 70,
+    width: 70,
     alignSelf: 'center',
     padding: 10,
   },
