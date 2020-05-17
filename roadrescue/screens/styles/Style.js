@@ -61,8 +61,7 @@ const styles = StyleSheet.create({
   madokaContainer: {
     flex: 1,
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
+    flexWrap: 'nowrap',
     marginTop: 10,
   },
   menuItem: {
@@ -153,7 +152,7 @@ const styles = StyleSheet.create({
   },
   inputFlex2: {
     alignSelf: 'stretch',
-    width: 250,
+    width: '90%',
   },
   title: {
     paddingBottom: 16,
@@ -172,7 +171,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 100,
     borderBottomLeftRadius: 100,
     borderBottomRightRadius: 100,
-    backgroundColor: '#fff',
+    backgroundColor: '#F5FFFA',
   },
   logText: {
     color: '#fff',
@@ -188,10 +187,10 @@ const styles = StyleSheet.create({
   },
   visibilityBtn: {
     position: 'absolute',
-    right: 15,
+    right: 39,
     height: 40,
     width: 35,
-    padding: 3,
+    padding: 0,
   },
   btnImage: {
     resizeMode: 'contain',

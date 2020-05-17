@@ -87,13 +87,7 @@ class ReportCrash extends Component {
 
               <View style={[styles.card2]}>
                 {this.state.show ? (
-                  <View
-                    style={{
-                      flex: 1,
-                      flexDirection: 'row',
-                      flexWrap: 'wrap',
-                      justifyContent: 'space-around',
-                    }}>
+                  <View style={styles.madokaContainer}>
                     <Icon
                       name="user"
                       size={30}
@@ -113,7 +107,7 @@ class ReportCrash extends Component {
                   <Icon
                     name="hospital-o"
                     size={30}
-                    style={{padding: 10, marginTop: 10, color: '#fff'}}
+                    style={{padding: 10, marginTop: 20, color: '#fff'}}
                   />
                   <Madoka
                     style={styles.inputFlex2}
@@ -141,7 +135,7 @@ class ReportCrash extends Component {
                       : require('../assets/images/placeholder.png')
                   }
                   style={{
-                    width: 100,
+                    width: '50%',
                     height: 100,
                     resizeMode: 'stretch',
                     marginTop: 10,
@@ -149,13 +143,17 @@ class ReportCrash extends Component {
                   }}
                 />
 
-                <View style={{alignSelf: 'center', justifyContent: 'center'}}>
+                <View
+                  style={{
+                    alignSelf: 'center',
+                    justifyContent: 'center',
+                    marginTop: 10,
+                  }}>
                   <Button
-                    style={{color: '#fff'}}
+                    style={{color: '#fff', padding: 10}}
                     title="Upload image"
-                    onPress={this.chooseFile.bind(this)}>
-                    Upload image
-                  </Button>
+                    onPress={this.chooseFile.bind(this)}
+                  />
                 </View>
               </View>
               <TextInput

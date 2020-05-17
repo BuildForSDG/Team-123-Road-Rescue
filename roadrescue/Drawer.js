@@ -25,9 +25,11 @@ class Drawer extends Component {
 }
 
 const CustomDrawerComponent = (props) => (
-  <SafeAreaView style={styles.drawSafe}>
-    <View style={styles.imageCard}>
-      <Image style={styles.drawerImage} source={medication} />
+  <SafeAreaView>
+    <View style={styles.drawSafe}>
+      <View style={styles.imageCard}>
+        <Image style={styles.drawerImage} source={medication} />
+      </View>
     </View>
     <View style={styles.drawerBody}>
       <DrawerItems {...props} />
@@ -119,7 +121,7 @@ const styles = StyleSheet.create({
   },
   drawerBody: {
     backgroundColor: '#fff',
-    marginTop: 10,
+    marginTop: -10,
   },
   drawerImage: {
     height: 70,

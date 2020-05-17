@@ -53,13 +53,7 @@ class RegisterScreen extends Component {
                     inputStyle={{color: '#fff'}}
                   />
                 </View>
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-around',
-                  }}>
+                <View style={styles.madokaContainer}>
                   <Icon name="envelope" size={30} style={styles.ImageStyle} />
                   <Madoka
                     style={styles.inputFlex2}
@@ -69,13 +63,7 @@ class RegisterScreen extends Component {
                     inputStyle={{color: '#fff'}}
                   />
                 </View>
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-around',
-                  }}>
+                <View style={styles.madokaContainer}>
                   <Icon name="phone" size={30} style={styles.ImageStyle} />
                   <Madoka
                     style={styles.inputFlex2}
@@ -85,13 +73,7 @@ class RegisterScreen extends Component {
                     inputStyle={{color: '#fff'}}
                   />
                 </View>
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-around',
-                  }}>
+                <View style={styles.madokaContainer}>
                   <Icon name="map-marker" size={30} style={styles.ImageStyle} />
                   <Madoka
                     style={styles.inputFlex2}
@@ -102,13 +84,7 @@ class RegisterScreen extends Component {
                   />
                 </View>
 
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-around',
-                  }}>
+                <View style={styles.madokaContainer}>
                   <Icon name="lock" size={30} style={styles.ImageStyle} />
                   <Madoka
                     secureTextEntry={this.state.hidePassword}

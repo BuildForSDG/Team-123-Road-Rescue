@@ -114,7 +114,11 @@ export default class SettingScreen extends React.Component {
         <TouchableOpacity
           style={{alignSelf: 'flex-start', margin: 18}}
           onPress={() => this.props.navigation.openDrawer()}>
-          <Icon name="bars" size={30} color="#8c231a" />
+          <Icon
+            name={Platform.OS === 'ios' ? 'bars' : 'bars'}
+            size={30}
+            color="#8c231a"
+          />
         </TouchableOpacity>
         <SettingsScreen
           data={this.settingsData}
