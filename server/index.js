@@ -5,14 +5,9 @@ const app = express();
 
 app.use(express.static('dist'));
 
+//app.use('/', (req, res) => res.sendFile(path.resolve(__dirname, '..', 'dist/index.html')));
 
-app.use('/api/check', (req, res) => {
-
-  return res.send("healthy");
-
-});
-
-app.use('/', (req, res) => res.sendFile(path.resolve(__dirname, '..', 'dist/index.html')));
+app.use('/', (req, res) => res.redirect(path.resolve(__dirname, '..', 'dist/index.html')));
 
 const PORT = process.env.PORT || 3000;
 
