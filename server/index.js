@@ -19,8 +19,13 @@ app.get('/api/test', (req, res) => res.status(200).json({ test }));
 // Port for local and Heroku
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, (err) => {
-  if (err) return;
-  // eslint-disable-next-line no-console
-  console.log(`Listening on port ${PORT}`);
-});
+// Prevent Jest Open handle when running test by bridging NOD_ENV
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, (err) => {
+    if (err) return;
+    // eslint-disable-next-line no-console
+    console.log(`Listening on port ${PORT}`);
+  });
+}
+
+module.exports = app;

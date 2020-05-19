@@ -3,5 +3,6 @@ module.exports = {
   rootDir: '__tests__',
   testRegex: ['.spec.js$', '.test.js$'],
   coverageDirectory: './coverage',
-  testEnvironment: 'jsdom'
+  testEnvironment: 'jsdom',
+  coveragePathIgnorePatterns: ['/node_modules/']
 };

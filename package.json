@@ -13,10 +13,10 @@
     "test": "__tests__"
   },
   "scripts": {
-    "test": "jest",
+    "test": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles --testTimeout=30000",
     "test:watch": "jest --watch",
     "test:cover": "jest --coverage",
-    "lint": "eslint \"src/**/*.js\" && eslint \"server/**\"",
+    "lint": "eslint \"src/**/*.js\" && eslint \"server/**\" && eslint \"__tests__/*.test.js\"",
     "build": "yarn clean && NODE_ENV=production parcel build src/** --public-url=/",
     "clean": "rimraf dist",
     "dev": "parcel watch ./src/index.html & nodemon server/index.js",
@@ -37,7 +37,9 @@
   "license": "MIT",
   "dependencies": {
     "concurrently": "^5.2.0",
-    "express": "^4.17.1"
+    "cross-env": "^7.0.2",
+    "express": "^4.17.1",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
