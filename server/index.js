@@ -1,17 +1,22 @@
 const express = require('express');
 const path = require('path');
 
+// Set up express server
 const app = express();
 app.use(express.json());
 
+// Links express server to parcel bundled files
 app.use(express.static('dist'));
 
+// Routes all request to landing page to index.html
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'dist/index.html'));
 });
 
+// Test route
 app.get('/api/test', (req, res) => res.status(200).json({ test }));
 
+// Port for local and Heroku
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, (err) => {
