@@ -1,4 +1,5 @@
-import app from './app';
+import { app } from './app';
+
 
 const startApp = async () => {
   const header = document.querySelector('[data-app-name]');
