@@ -10,7 +10,7 @@ app.use(express.static('dist'));
 
 app.use('/', (req, res) => res.redirect(path.resolve(__dirname, '..', 'dist/index.html')));
 
-app.get('/api/test' (req, res)=>{
+app.get('/api/test', (req, res)=>{
   return res.status(200).json({"test":"test"});
 });
 
