@@ -8,7 +8,7 @@ app.use(express.static('dist'));
 
 app.use('/', (req, res) => res.sendFile(path.resolve(__dirname, '..', 'dist/index.html')));
 
-const PORT = process.env.NOD_ENV || 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, (err) => {
   if (err) return;
