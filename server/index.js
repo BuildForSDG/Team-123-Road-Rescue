@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 });
 
 // Test route
-app.get('/api/test', (req, res) => res.status(200).json({ test }));
+app.get('/api/test', (req, res) => res.status(200).json({ test: 'test' }));
 
 // Port for local and Heroku
 const PORT = process.env.PORT || 3000;

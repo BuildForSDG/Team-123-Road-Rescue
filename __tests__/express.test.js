@@ -29,5 +29,6 @@ describe('Test the root path', () => {
       .set('Accept', 'application/json')
       .expect('Content-Type', 'application/json; charset=utf-8');
     expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('test');
   });
 });
