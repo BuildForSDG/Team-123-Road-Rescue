@@ -26,7 +26,7 @@ const renderHero = () => (
       source={require('../assets/images/medication.png')}
       style={styles.heroImage}
     />
-    <View style={{flex: 1}}>
+    <View style={styles.SettingsWrapper}>
       <Text style={styles.heroTitle}>Road Rescue</Text>
       <Text style={styles.heroSubtitle}>Reduce road injuries and deaths</Text>
     </View>

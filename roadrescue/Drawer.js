@@ -12,11 +12,11 @@ import medication from './assets/images/medication.png';
 import mail from './assets/images/mail.png';
 import alarm from './assets/images/alarm.png';
 import sign from './assets/images/sign.png';
-import building from './assets/images/building.png';
 import user from './assets/images/user.png';
 import setting from './assets/images/setting.png';
 import {DrawerItems, createDrawerNavigator} from 'react-navigation-drawer';
 import {createAppContainer} from 'react-navigation';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 class Drawer extends React.Component {
   render() {
@@ -42,7 +42,7 @@ const DrawerNavigator = createDrawerNavigator(
     Home: {
       screen: HomeScreen,
       navigationOptions: {
-        drawerIcon: <Image source={building} style={{width: 25, height: 25}} />,
+        drawerIcon: <Icon name="home" size={30} color="#000" />,
       },
     },
 

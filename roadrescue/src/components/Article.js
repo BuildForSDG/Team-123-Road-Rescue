@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Linking, TouchableNativeFeedback, StyleSheet} from 'react-native';
+import {View, Linking, TouchableNativeFeedback} from 'react-native';
 import {Text, Card, Divider} from 'react-native-elements';
 import {styles} from '../../screens/styles/Style';
 import moment from 'moment';
