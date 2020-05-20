@@ -26,7 +26,9 @@ class LoginScreen extends Component {
 
   render() {
     return (
-      <LinearGradient style={{flex: 1}} colors={['#D7816A', '#BD4F6C']}>
+      <LinearGradient
+        style={styles.aboutContainer}
+        colors={['#D7816A', '#BD4F6C']}>
         <SafeAreaView style={styles.safeArea}>
           <TouchableOpacity
             style={styles.menuItem}
@@ -48,8 +50,8 @@ class LoginScreen extends Component {
                     style={styles.inputFlex2}
                     label={'email'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
-                    inputStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
+                    inputStyle={styles.madokaStyle}
                   />
                 </View>
 
@@ -60,8 +62,8 @@ class LoginScreen extends Component {
                     style={styles.inputFlex2}
                     label={'password'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
-                    inputStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
+                    inputStyle={styles.madokaStyle}
                   />
                   <TouchableOpacity
                     activeOpacity={0.8}

@@ -59,7 +59,7 @@ class ReportCrash extends Component {
         console.log('ImagePicker Error: ', response.error);
       } else if (response.customButton) {
         console.log('User tapped custom button: ', response.customButton);
-        alert(response.customButton);
+        customAlert(response.customButton);
       } else {
         let source = response;
         this.setState({
@@ -70,7 +70,9 @@ class ReportCrash extends Component {
   };
   render() {
     return (
-      <LinearGradient style={{flex: 1}} colors={['#D7816A', '#BD4F6C']}>
+      <LinearGradient
+        style={styles.aboutContainer}
+        colors={['#D7816A', '#BD4F6C']}>
         <SafeAreaView style={styles.safeArea}>
           <TouchableOpacity
             style={styles.menuItem}
@@ -88,33 +90,25 @@ class ReportCrash extends Component {
               <View style={[styles.card2]}>
                 {this.state.show ? (
                   <View style={styles.madokaContainer}>
-                    <Icon
-                      name="user"
-                      size={30}
-                      style={{padding: 10, marginTop: 10, color: '#fff'}}
-                    />
+                    <Icon name="user" size={30} style={styles.ImageStyle} />
                     <Madoka
                       style={styles.inputFlex2}
                       label={'full name'}
                       borderColor={'#fff'}
-                      labelStyle={{color: '#fff'}}
-                      inputStyle={{color: '#fff'}}
+                      labelStyle={styles.madokaStyle}
+                      inputStyle={styles.madokaStyle}
                     />
                   </View>
                 ) : null}
 
                 <View style={styles.madokaContainer}>
-                  <Icon
-                    name="hospital-o"
-                    size={30}
-                    style={{padding: 10, marginTop: 20, color: '#fff'}}
-                  />
+                  <Icon name="hospital-o" size={30} style={styles.ImageStyle} />
                   <Madoka
                     style={styles.inputFlex2}
                     label={'no of victims'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
-                    inputStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
+                    inputStyle={styles.madokaStyle}
                   />
                 </View>
 
@@ -124,8 +118,8 @@ class ReportCrash extends Component {
                     style={styles.inputFlex2}
                     label={'crash location'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
-                    inputStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
+                    inputStyle={styles.madokaStyle}
                   />
                 </View>
                 <Image
@@ -134,23 +128,12 @@ class ReportCrash extends Component {
                       ? {uri: this.state.filePath.uri}
                       : require('../assets/images/placeholder.png')
                   }
-                  style={{
-                    width: '50%',
-                    height: 100,
-                    resizeMode: 'stretch',
-                    marginTop: 10,
-                    alignSelf: 'center',
-                  }}
+                  style={styles.placeholder}
                 />
 
-                <View
-                  style={{
-                    alignSelf: 'center',
-                    justifyContent: 'center',
-                    marginTop: 10,
-                  }}>
+                <View style={styles.uploadBtn}>
                   <Button
-                    style={{color: '#fff', padding: 10}}
+                    style={styles.btnChoose}
                     title="Upload image"
                     onPress={this.chooseFile.bind(this)}
                   />

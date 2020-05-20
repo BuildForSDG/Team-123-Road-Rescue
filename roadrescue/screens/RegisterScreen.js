@@ -26,7 +26,9 @@ class RegisterScreen extends Component {
 
   render() {
     return (
-      <LinearGradient style={{flex: 1}} colors={['#D7816A', '#BD4F6C']}>
+      <LinearGradient
+        style={styles.aboutContainer}
+        colors={['#D7816A', '#BD4F6C']}>
         <SafeAreaView style={styles.safeArea}>
           <TouchableOpacity
             style={styles.menuContainer}
@@ -49,8 +51,8 @@ class RegisterScreen extends Component {
                     style={styles.inputFlex2}
                     label={'Full name'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
-                    inputStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
+                    inputStyle={styles.madokaStyle}
                   />
                 </View>
                 <View style={styles.madokaContainer}>
@@ -59,8 +61,8 @@ class RegisterScreen extends Component {
                     style={styles.inputFlex2}
                     label={'email'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
-                    inputStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
+                    inputStyle={styles.madokaStyle}
                   />
                 </View>
                 <View style={styles.madokaContainer}>
@@ -69,8 +71,8 @@ class RegisterScreen extends Component {
                     style={styles.inputFlex2}
                     label={'phone'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
-                    inputStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
+                    inputStyle={styles.madokaStyle}
                   />
                 </View>
                 <View style={styles.madokaContainer}>
@@ -79,8 +81,8 @@ class RegisterScreen extends Component {
                     style={styles.inputFlex2}
                     label={'Address'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
-                    inputStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
+                    inputStyle={styles.madokaStyle}
                   />
                 </View>
 
@@ -91,8 +93,8 @@ class RegisterScreen extends Component {
                     style={styles.inputFlex2}
                     label={'password'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
-                    inputStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
+                    inputStyle={styles.madokaStyle}
                   />
                   <TouchableOpacity
                     activeOpacity={0.8}

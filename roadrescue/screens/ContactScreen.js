@@ -19,7 +19,9 @@ Icon.loadFont();
 class ContactScreen extends Component {
   render() {
     return (
-      <LinearGradient style={{flex: 1}} colors={['#D7816A', '#BD4F6C']}>
+      <LinearGradient
+        style={styles.aboutContainer}
+        colors={['#D7816A', '#BD4F6C']}>
         <SafeAreaView style={styles.safeArea}>
           <TouchableOpacity
             style={styles.menuItem}
@@ -41,8 +43,8 @@ class ContactScreen extends Component {
                     style={styles.inputFlex2}
                     label={'Full name'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
-                    inputStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
+                    inputStyle={styles.madokaStyle}
                   />
                 </View>
 
@@ -53,7 +55,7 @@ class ContactScreen extends Component {
                     label={'email'}
                     borderColor={'#fff'}
                     labelStyle={styles.madokaStyle}
-                    inputStyle={{color: '#fff'}}
+                    inputStyle={styles.madokaStyle}
                   />
                 </View>
               </View>

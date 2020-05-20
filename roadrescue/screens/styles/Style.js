@@ -198,6 +198,44 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 7,
   },
+  dividerColor: {
+    backgroundColor: '#dfe6e9',
+  },
+  noteStyle: {
+    margin: 5,
+    fontStyle: 'italic',
+    color: '#b2bec3',
+    fontSize: 10,
+  },
+  featuredTitleStyle: {
+    marginHorizontal: 5,
+    textShadowColor: '#00000f',
+    textShadowOffset: {width: 3, height: 3},
+    textShadowRadius: 3,
+  },
+  placeholder: {
+    width: '50%',
+    height: 100,
+    resizeMode: 'stretch',
+    marginTop: 10,
+    alignSelf: 'center',
+  },
+  uploadBtn: {
+    alignSelf: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
+  },
+  btnChoose: {
+    color: '#fff',
+    padding: 10,
+  },
+  articleStyle: {
+    marginBottom: 10,
+  },
+  newsStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });
 
 export {styles};

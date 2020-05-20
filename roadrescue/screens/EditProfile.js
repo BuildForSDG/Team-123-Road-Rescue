@@ -29,10 +29,12 @@ class EditProfile extends Component {
 
   render() {
     return (
-      <LinearGradient style={{flex: 1}} colors={['#D7816A', '#BD4F6C']}>
+      <LinearGradient
+        style={styles.aboutContainer}
+        colors={['#D7816A', '#BD4F6C']}>
         <SafeAreaView style={styles.safeArea}>
           <TouchableOpacity
-            style={{alignItems: 'flex-start', margin: 18}}
+            style={styles.menuItem}
             onPress={() => this.props.navigation.openDrawer()}>
             <Icon name="bars" size={30} color="#fff" />
           </TouchableOpacity>
@@ -52,8 +54,8 @@ class EditProfile extends Component {
                     style={styles.inputFlex2}
                     label={'Full name'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
-                    inputStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
+                    inputStyle={styles.madokaStyle}
                   />
                 </View>
                 <View style={styles.madokaContainer}>
@@ -62,8 +64,8 @@ class EditProfile extends Component {
                     style={styles.inputFlex2}
                     label={'email'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
-                    inputStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
+                    inputStyle={styles.madokaStyle}
                   />
                 </View>
                 <View style={styles.madokaContainer}>
@@ -72,8 +74,8 @@ class EditProfile extends Component {
                     style={styles.inputFlex2}
                     label={'phone'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
-                    inputStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
+                    inputStyle={styles.madokaStyle}
                   />
                 </View>
                 <View style={styles.madokaContainer}>
@@ -82,8 +84,8 @@ class EditProfile extends Component {
                     style={styles.inputFlex2}
                     label={'address'}
                     borderColor={'#fff'}
-                    labelStyle={{color: '#fff'}}
-                    inputStyle={{color: '#fff'}}
+                    labelStyle={styles.madokaStyle}
+                    inputStyle={styles.madokaStyle}
                   />
                 </View>
 

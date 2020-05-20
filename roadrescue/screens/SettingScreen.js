@@ -48,7 +48,7 @@ export default class SettingScreen extends React.Component {
         {
           title: (
             <Text
-              style={{padding: 10}}
+              style={styles.textPadding}
               onPress={() => this.props.navigation.navigate('Edit Profile')}>
               Edit Profile
             </Text>
@@ -58,7 +58,7 @@ export default class SettingScreen extends React.Component {
           ),
         },
         {
-          title: <Text style={{padding: 10}}>Traffic report history</Text>,
+          title: <Text style={styles.textPadding}>Traffic report history</Text>,
           renderAccessory: () => (
             <Image source={history} style={styles.imageStyle} />
           ),
@@ -73,7 +73,7 @@ export default class SettingScreen extends React.Component {
         {
           title: (
             <Text
-              style={{padding: 10}}
+              style={styles.textPadding}
               onPress={() => this.props.navigation.navigate('About us')}>
               About us
             </Text>
@@ -83,19 +83,19 @@ export default class SettingScreen extends React.Component {
           ),
         },
         {
-          title: <Text style={{padding: 10}}>Notifications</Text>,
+          title: <Text style={styles.textPadding}>Notifications</Text>,
           renderAccessory: () => (
             <Image source={bell} style={styles.imageStyle} />
           ),
         },
         {
-          title: <Text style={{padding: 10}}>Privacy policy</Text>,
+          title: <Text style={styles.textPadding}>Privacy policy</Text>,
           renderAccessory: () => (
             <Image source={terms} style={styles.imageStyle} />
           ),
         },
         {
-          title: <Text style={{padding: 10}}>Terms of use</Text>,
+          title: <Text style={styles.textPadding}>Terms of use</Text>,
           renderAccessory: () => (
             <Image source={privacy} style={styles.imageStyle} />
           ),
@@ -106,13 +106,13 @@ export default class SettingScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.SettingsWrapper}>
         <StatusBar barStyle="light-content" backgroundColor="#8c231a" />
         <View style={styles.navBar}>
           <Text style={styles.navBarTitle}>Settings</Text>
         </View>
         <TouchableOpacity
-          style={{alignSelf: 'flex-start', margin: 18}}
+          style={styles.menuSettings}
           onPress={() => this.props.navigation.openDrawer()}>
           <Icon
             name={Platform.OS === 'ios' ? 'bars' : 'bars'}
@@ -143,6 +143,9 @@ export default class SettingScreen extends React.Component {
 const statusBarHeight = Platform.OS === 'ios' ? 35 : 0;
 
 const styles = StyleSheet.create({
+  SettingsWrapper: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -188,5 +191,12 @@ const styles = StyleSheet.create({
   imageStyle: {
     width: 25,
     height: 25,
+  },
+  textPadding: {
+    padding: 10,
+  },
+  menuSettings: {
+    alignItems: 'flex-start',
+    margin: 18,
   },
 });

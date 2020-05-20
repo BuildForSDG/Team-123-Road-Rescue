@@ -18,7 +18,7 @@ class AboutScreen extends Component {
           onPress={() => this.props.navigation.openDrawer()}>
           <Icon name="bars" size={30} color="#cc5500" />
         </TouchableOpacity>
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.container}>
           <Text>About screen</Text>
         </View>
       </SafeAreaView>

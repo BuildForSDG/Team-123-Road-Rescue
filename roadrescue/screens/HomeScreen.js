@@ -61,7 +61,6 @@ class HomeScreen extends Component {
         </View>
 
         <FlatList
-          style={{width: '100%'}}
           data={this.state.articles}
           renderItem={({item}) => <Article article={item} />}
           keyExtractor={(item) => item.url}

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {SafeAreaView, StyleSheet, View, Image} from 'react-native';
 import HomeScreen from './screens/HomeScreen.js';
 import AboutScreen from './screens/AboutScreen.js';
@@ -18,7 +18,7 @@ import setting from './assets/images/setting.png';
 import {DrawerItems, createDrawerNavigator} from 'react-navigation-drawer';
 import {createAppContainer} from 'react-navigation';
 
-class Drawer extends Component {
+class Drawer extends React.Component {
   render() {
     return <App2 />;
   }
