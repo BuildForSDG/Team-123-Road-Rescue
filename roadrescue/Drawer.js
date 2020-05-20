@@ -9,14 +9,14 @@ import RegisterScreen from './screens/RegisterScreen.js';
 import SettingScreen from './screens/SettingScreen.js';
 import EditProfile from './screens/EditProfile.js';
 import medication from './assets/images/medication.png';
+import building from './assets/images/building.png';
 import mail from './assets/images/mail.png';
 import alarm from './assets/images/alarm.png';
-import sign from './assets/images/sign.png';
+import register from './assets/images/register.png';
 import user from './assets/images/user.png';
 import setting from './assets/images/setting.png';
 import {DrawerItems, createDrawerNavigator} from 'react-navigation-drawer';
 import {createAppContainer} from 'react-navigation';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 class Drawer extends React.Component {
   render() {
@@ -42,7 +42,7 @@ const DrawerNavigator = createDrawerNavigator(
     Home: {
       screen: HomeScreen,
       navigationOptions: {
-        drawerIcon: <Icon name="home" size={30} color="#000" />,
+        drawerIcon: <Image source={building} />,
       },
     },
 
@@ -52,31 +52,31 @@ const DrawerNavigator = createDrawerNavigator(
     Register: {
       screen: RegisterScreen,
       navigationOptions: {
-        drawerIcon: <Image source={user} style={{width: 25, height: 25}} />,
+        drawerIcon: <Image source={register} />,
       },
     },
     'Sign in': {
       screen: LoginScreen,
       navigationOptions: {
-        drawerIcon: <Image source={sign} style={{width: 25, height: 25}} />,
+        drawerIcon: <Image source={user} />,
       },
     },
     'Report crash': {
       screen: ReportCrash,
       navigationOptions: {
-        drawerIcon: <Image source={alarm} style={{width: 25, height: 25}} />,
+        drawerIcon: <Image source={alarm} />,
       },
     },
     'Contact us': {
       screen: ContactScreen,
       navigationOptions: {
-        drawerIcon: <Image source={mail} style={{width: 25, height: 25}} />,
+        drawerIcon: <Image source={mail} />,
       },
     },
     Settings: {
       screen: SettingScreen,
       navigationOptions: {
-        drawerIcon: <Image source={setting} style={{width: 25, height: 25}} />,
+        drawerIcon: <Image source={setting} />,
       },
     },
     'Edit Profile': {
