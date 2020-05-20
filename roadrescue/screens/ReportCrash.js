@@ -58,8 +58,7 @@ class ReportCrash extends Component {
       } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
       } else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
-        customAlert(response.customButton);
+        console.log('clicked');
       } else {
         let source = response;
         this.setState({
