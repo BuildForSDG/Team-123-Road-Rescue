@@ -25,7 +25,7 @@ class Drawer extends React.Component {
 }
 
 const CustomDrawerComponent = (props) => (
-  <SafeAreaView>
+  <View style={styles.container}>
     <View style={styles.drawSafe}>
       <View style={styles.imageCard}>
         <Image style={styles.drawerImage} source={medication} />
@@ -34,7 +34,7 @@ const CustomDrawerComponent = (props) => (
     <View style={styles.drawerBody}>
       <DrawerItems {...props} />
     </View>
-  </SafeAreaView>
+  </View>
 );
 
 const DrawerNavigator = createDrawerNavigator(
@@ -101,14 +101,17 @@ const DrawerNavigator = createDrawerNavigator(
 const App2 = createAppContainer(DrawerNavigator);
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   drawSafe: {
     backgroundColor: '#8c231a',
-    padding: 10,
+    padding: 40,
   },
   imageCard: {
     justifyContent: 'center',
     alignSelf: 'center',
-    marginTop: 10,
+    marginTop: 25,
     width: 100,
     height: 100,
     padding: 5,

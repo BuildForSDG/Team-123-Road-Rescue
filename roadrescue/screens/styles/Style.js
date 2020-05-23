@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
   },
   visibilityBtn: {
     position: 'absolute',
-    right: 39,
+    right: 5,
     height: 40,
     width: 35,
     padding: 0,

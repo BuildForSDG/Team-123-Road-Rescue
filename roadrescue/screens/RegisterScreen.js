@@ -56,7 +56,7 @@ class RegisterScreen extends Component {
                   />
                 </View>
                 <View style={styles.madokaContainer}>
-                  <Icon name="envelope" size={30} style={styles.ImageStyle} />
+                  <Icon name="envelope" size={25} style={styles.ImageStyle} />
                   <Madoka
                     style={styles.inputFlex2}
                     label={'email'}

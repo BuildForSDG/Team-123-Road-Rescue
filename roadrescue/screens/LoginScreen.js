@@ -45,7 +45,7 @@ class LoginScreen extends Component {
 
               <View style={[styles.card2]}>
                 <View style={styles.madokaContainer}>
-                  <Icon name="envelope" size={30} style={styles.ImageStyle} />
+                  <Icon name="envelope" size={20} style={styles.ImageStyle} />
                   <Madoka
                     style={styles.inputFlex2}
                     label={'email'}
