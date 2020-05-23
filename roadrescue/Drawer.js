@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, View, Image} from 'react-native';
+import {StyleSheet, View, Image} from 'react-native';
 import HomeScreen from './screens/HomeScreen.js';
 import AboutScreen from './screens/AboutScreen.js';
 import ContactScreen from './screens/ContactScreen.js';
