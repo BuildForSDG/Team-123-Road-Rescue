@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {getNews} from '../src/components/News';
 import Article from '../src/components/Article';
 import crash from '../assets/images/crash.png';
+import sun from '../assets/images/sun.png';
 import {styles} from './styles/Style';
 Icon.loadFont();
 
@@ -56,6 +57,15 @@ class HomeScreen extends Component {
               style={styles.buttonTouch}
               onPress={() => this.props.navigation.navigate('Report crash')}>
               <Text style={styles.crashText}>Report crash</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.weatherContainer}>
+            <Image source={sun} style={styles.imageIcon} />
+            <TouchableOpacity
+              style={styles.buttonTouch}
+              onPress={() => this.props.navigation.navigate('Weather')}>
+              <Text style={styles.crashText}>Weather</Text>
             </TouchableOpacity>
           </View>
         </View>

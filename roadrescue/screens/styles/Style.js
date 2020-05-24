@@ -10,6 +10,16 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 5,
     backgroundColor: '#F5FFFA',
   },
+  weatherContainer: {
+    height: 150,
+    padding: 10,
+    marginTop: 10,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
+    borderBottomLeftRadius: 5,
+    borderBottomRightRadius: 5,
+    backgroundColor: '#F5FFFA',
+  },
   homeContainer: {
     backgroundColor: '#8c231a',
     padding: 10,

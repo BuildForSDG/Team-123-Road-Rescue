@@ -8,6 +8,7 @@ import LoginScreen from './screens/LoginScreen.js';
 import RegisterScreen from './screens/RegisterScreen.js';
 import SettingScreen from './screens/SettingScreen.js';
 import EditProfile from './screens/EditProfile.js';
+import Weather from './screens/Weather.js';
 import medication from './assets/images/medication.png';
 import building from './assets/images/building.png';
 import mail from './assets/images/mail.png';
@@ -15,6 +16,7 @@ import alarm from './assets/images/alarm.png';
 import register from './assets/images/register.png';
 import user from './assets/images/user.png';
 import setting from './assets/images/setting.png';
+import storm from './assets/images/storm.png';
 import {DrawerItems, createDrawerNavigator} from 'react-navigation-drawer';
 import {createAppContainer} from 'react-navigation';
 
@@ -71,6 +73,12 @@ const DrawerNavigator = createDrawerNavigator(
       screen: ContactScreen,
       navigationOptions: {
         drawerIcon: <Image source={mail} />,
+      },
+    },
+    'Weather': {
+      screen: Weather,
+      navigationOptions: {
+        drawerIcon: <Image source={storm} />,
       },
     },
     Settings: {
