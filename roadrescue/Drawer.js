@@ -75,7 +75,7 @@ const DrawerNavigator = createDrawerNavigator(
         drawerIcon: <Image source={mail} />,
       },
     },
-    'Weather': {
+    Weather: {
       screen: Weather,
       navigationOptions: {
         drawerIcon: <Image source={storm} />,

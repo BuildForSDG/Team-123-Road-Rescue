@@ -11,7 +11,9 @@ class SeachInput extends Component {
   };
 
   handleSubmitEditing = () => {
-    if (!this.state.text) return;
+    if (!this.state.text) {
+      return;
+    }
 
     this.props.onSubmit(this.state.text);
     this.setState({text: ''});

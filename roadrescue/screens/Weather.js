@@ -34,7 +34,9 @@ export default class App extends React.Component {
   }
 
   handleUpdateLocation = async (city) => {
-    if (!city) return;
+    if (!city) {
+      return;
+    }
 
     this.setState({loading: true}, async () => {
       try {
