@@ -1,4 +1,8 @@
+
 import appT from '../src/app';
+
+require('iconv-lite').encodingExists('cesu8');
+
 
 describe('app module', () => {
   test('it exists', async () => {

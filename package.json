@@ -13,7 +13,7 @@
     "test": "__tests__"
   },
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles --testTimeout=30000",
+    "test": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles --testTimeout=30000 --forceExit",
     "test:watch": "jest --watch",
     "test:cover": "jest --coverage",
     "lint": "eslint \"src/**/*.js\" && eslint \"server/**\" && eslint \"__tests__/*.test.js\"",
@@ -36,10 +36,33 @@
   },
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^4.0.1",
+    "chai": "^4.2.0",
+    "compression": "^1.7.4",
     "concurrently": "^5.2.0",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "supertest": "^4.0.2"
+    "express-validator": "^6.5.0",
+    "helmet": "^3.22.0",
+    "iconv-lite": "^0.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "passport": "^0.4.1",
+    "passport-facebook-token": "^3.3.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.2.1",
+    "pg-hstore": "^2.3.3",
+    "proxyquire": "^2.1.3",
+    "sequelize": "^5.21.10",
+    "sinon": "^9.0.2",
+    "sinon-chai": "^3.5.0",
+    "supertest": "^4.0.2",
+    "tedious": "^8.3.0",
+    "umzug": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
