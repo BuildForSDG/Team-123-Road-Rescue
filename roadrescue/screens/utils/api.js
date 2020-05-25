@@ -20,13 +20,15 @@ export const fetchWeather = async (woeid) => {
     wind_speed,
   } = consolidated_weather[0];
 
-  return {
+  const res = {
     location: title,
     weather: weather_state_name,
     temperature: the_temp,
-    humidity,
+    humidity: humidity,
     minTemp: min_temp,
     maxTemp: max_temp,
     windSpeed: wind_speed,
   };
+
+  return res;
 };
