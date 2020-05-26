@@ -17,18 +17,18 @@ const router = Router();
  * @returns {Customer.model} 200 - Return a Object of Customer with auth credencials
  * @returns {error.model}  400 - Return a error object { "code": "USR_02", "message": "The field example is empty.","field": "example","status": "500"}
  */
+const validityUser = [check('email').isEmail(),
+  check('password')
+    .not()
+    .isEmpty(),
+  check('mob_phone')
+    .not()
+    .isEmpty(),
+  check('name')
+    .not()
+    .isEmpty()];
 router.post(
-  '/users',
-  [check('email').isEmail(),
-    check('password')
-      .not()
-      .isEmpty(),
-    check('mob_phone')
-      .not()
-      .isEmpty(),
-    check('name')
-      .not()
-      .isEmpty()],
+  '/users', validityUser,
 
   UserController.create
 );
@@ -119,19 +119,7 @@ router.get('/user', passport.authenticate('jwt'), UserController.geUserProfile);
 router.put(
   '/users',
   passport.authenticate('jwt'),
-  [check('email').isEmail(),
-    check('password')
-      .not()
-      .isEmpty(),
-    check('mob_phone')
-      .not()
-      .isEmpty(),
-    check('name')
-      .not()
-      .isEmpty(),
-    check('address')
-      .not()
-      .isEmpty()],
+  validityUser,
 
   UserController.updateUser
 );

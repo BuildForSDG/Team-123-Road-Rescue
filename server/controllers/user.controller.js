@@ -3,10 +3,12 @@
 import {
   Users, CrashReport, ContactUs, UserMessages
 } from '../database/models';
-import { format, destructUser, destructCrash } from './util';
+import {
+  format, destructUser, destructCrash, generateJwt
+} from './controllerUtil';
 
-const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const passport = require('passport');
 const secret = require('../authenticationConfig/jwtConfig');
 
 
@@ -94,14 +96,7 @@ class UserController {
         const token = jwt.sign(payload, `${secret}`, { expiresIn: '24h' });
 
         return res.status(200).json({
-          user: {
-            user_id: user.user_id,
-            name: user.name,
-            email: user.email,
-            address: user.address,
-            mob_phone: user.mob_phone,
-            state: user.state
-          },
+          user: destructUser(user),
 
           accessToken: `Bearer ${token}`,
           expiresIn: '24h'
@@ -151,31 +146,7 @@ class UserController {
           // eslint-disable-next-line consistent-return
           req.login(user, { session: false }, async (error) => {
             if (error) return next(error);
-
-            // We don't want to store the sensitive information such as the
-            // user password in the token so we pick only the email and id
-            const payload = {
-              email: user.email
-            };
-            // eslint-disable-next-line consistent-return
-            jwt.sign(payload, `${secret}`, { expiresIn: '24h' }, (errr, token) => {
-              if (errr) {
-                return res.status(400).json({
-                  error: {
-                    code: 'USR_1005',
-                    message: `Error occurred`,  // eslint-disable-line
-                    field: 'jwt signing',
-                    status: 400
-                  }
-                });
-              }
-
-              return res.status(200).json({
-                user: destructUser(user),
-                accessToken: `Bearer ${token}`,
-                expiresIn: '24h'
-              });
-            });
+            return generateJwt(user, res, 'USR_1005', 'Error occurred', 'jwt signing', 400);
           });
         } catch (error) {
           return next(error);
@@ -650,14 +621,7 @@ class UserController {
 
                 },
 
-                user: {
-                  user_id: user.user_id,
-                  name: user.name,
-                  email: user.email,
-                  address: user.address,
-                  mob_phone: user.mob_phone,
-                  state: user.state
-                },
+                user: destructUser(user),
 
                 accessToken: `Bearer ${token}`,
                 expiresIn: '24h'
@@ -713,37 +677,8 @@ class UserController {
           req.login(user, { session: false }, async (error) => {
             if (error) return next(error);
 
-            // We don't want to store the sensitive information such as the
-            // user password in the token so we pick only the email and id
-            const payload = {
-              email: user.email
-            };
+            return generateJwt(user, res, 'USR_1021', 'Error occurred', 'jwt signing', 400);
             // eslint-disable-next-line consistent-return
-            jwt.sign(payload, `${secret}`, { expiresIn: '24h' }, (errr, token) => {
-              if (errr) {
-                return res.status(400).json({
-                  error: {
-                    code: 'USR_1021',
-                    message: `Error occurred`,  // eslint-disable-line
-                    field: 'jwt signing',
-                    status: 400
-                  }
-                });
-              }
-
-              return res.status(200).json({
-                user: {
-                  user_id: user.user_id,
-                  name: user.name,
-                  email: user.email,
-                  address: user.address,
-                  mob_phone: user.mob_phone,
-                  state: user.state
-                },
-                accessToken: `Bearer ${token}`,
-                expiresIn: '24h'
-              });
-            });
           });
         } catch (error) {
           return next(error);
