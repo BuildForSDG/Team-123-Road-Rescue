@@ -1,4 +1,6 @@
 
+import { name } from './modelsUtil';
+
 module.exports = (sequelize, DataTypes) => {
   const CrashReport = sequelize.define(
     'CrashReport',
@@ -8,13 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       },
-      name: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-        validate: {
-          notEmpty: true
-        }
-      },
+      name: name(),
       number_victims: {
         type: DataTypes.INTEGER,
         allowNull: true,

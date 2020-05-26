@@ -1,4 +1,6 @@
 
+import { name } from './modelsUtil';
+
 module.exports = (sequelize, DataTypes) => {
   const ContactUs = sequelize.define(
     'ContactUs',
@@ -8,13 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       },
-      name: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-        validate: {
-          notEmpty: true
-        }
-      },
+      name: name(),
       user_id: DataTypes.INTEGER
     },
     {

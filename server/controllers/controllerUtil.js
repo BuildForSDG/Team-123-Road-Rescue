@@ -92,6 +92,8 @@ const returnMsgStatus = (msg, res, user) => res.status(200).json({
   accessToken: `Bearer ${returnToken(user)}`,
   expiresIn: '24h'
 });
+
+const twentyfour = '24h';
 module.exports = {
   format,
   destructUser,
@@ -101,7 +103,7 @@ module.exports = {
   returnValidation,
   returnError400,
   returnToken,
-  destructMessages,
   returnError401,
-  returnMsgStatus
+  returnMsgStatus,
+  twentyfour
 };

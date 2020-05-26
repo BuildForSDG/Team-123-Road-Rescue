@@ -5,7 +5,7 @@ import {
 } from '../database/models';
 import {
   format, destructUser, destructCrash, generateJwt, errorController, returnValidation,
-  returnError400, returnToken, destructMessages, returnError401, returnMsgStatus
+  returnError400, returnToken, returnError401, returnMsgStatus, twentyfour
 } from './controllerUtil';
 
 const jwt = require('jsonwebtoken');
@@ -83,7 +83,7 @@ class UserController {
         user: destructUser(user),
 
         accessToken: `Bearer ${returnToken(user)}`,
-        expiresIn: '24h'
+        expiresIn: twentyfour
       }))
     // eslint-disable-next-line no-unused-vars
       .catch((err) => res.status(400).json({
@@ -168,7 +168,7 @@ class UserController {
             user: destructUser(user),
 
             accessToken: `Bearer ${returnToken(user)}`,
-            expiresIn: '24h'
+            expiresIn: twentyfour
           }))
         // eslint-disable-next-line no-unused-vars
           .catch((_err) => res.status(400).json({
@@ -335,7 +335,7 @@ class UserController {
             user: destructUser(user),
 
             accessToken: `Bearer ${returnToken(user)}`,
-            expiresIn: '24h'
+            expiresIn: twentyfour
           }))
         // eslint-disable-next-line no-unused-vars
           .catch((_err) => res.status(400).json({
@@ -447,9 +447,6 @@ class UserController {
       'jwt',
       { session: false },
 
-      // eslint-disable-next-line consistent-return
-      // eslint-disable-next-line no-unused-vars
-      // eslint-disable-next-line consistent-return
       async (err, user) => {
         try {
           if (err || !user) {
@@ -484,9 +481,6 @@ class UserController {
       'jwt',
       { session: false },
 
-      // eslint-disable-next-line consistent-return
-      // eslint-disable-next-line no-unused-vars
-      // eslint-disable-next-line consistent-return
       async (err, user) => {
         try {
           if (err || !user) {
@@ -513,7 +507,7 @@ class UserController {
               .then((userx) => {
                 const payload = { email: user.email };
 
-                const token = jwt.sign(payload, `${secret}`, { expiresIn: '24h' });
+                const token = jwt.sign(payload, `${secret}`, { expiresIn: twentyfour });
 
                 return res.status(200).json({
 
@@ -527,7 +521,7 @@ class UserController {
                   },
 
                   accessToken: `Bearer ${token}`,
-                  expiresIn: '24h'
+                  expiresIn: twentyfour
                 });
               })
               // eslint-disable-next-line no-unused-vars
