@@ -64,10 +64,15 @@ const generateJwt = (user, res, code, message, field, status) => {
   });
 };
 
+const returnValidation = (res, req, result) => res.status(422).json({
+  error: errorController('USR_1001', result.array(), 'email', 422)
+});
+
 module.exports = {
   format,
   destructUser,
   destructCrash,
   generateJwt,
-  errorController
+  errorController,
+  returnValidation
 };

@@ -4,7 +4,7 @@ import {
   Users, CrashReport, ContactUs, UserMessages
 } from '../database/models';
 import {
-  format, destructUser, destructCrash, generateJwt, errorController
+  format, destructUser, destructCrash, generateJwt, errorController, returnValidation
 } from './controllerUtil';
 
 const jwt = require('jsonwebtoken');
@@ -48,9 +48,7 @@ class UserController {
   static async create(req, res, _next) {
     const result = format(req);
     if (!result.isEmpty()) {
-      return res.status(422).json({
-        error: errorController('USR_1001', result.array(), 'email', 422)
-      });
+      return returnValidation(res, req, result);
     }
 
 
@@ -197,8 +195,8 @@ class UserController {
             });
           })
         // eslint-disable-next-line no-unused-vars
-          .catch(err  => res.status(400).json({
-            error: errorController('USR_1007', err.message, 'crash report', 400)
+          .catch((_err) => res.status(400).json({
+            error: errorController('USR_1007', _err.message, 'crash report', 400)
           }));
       });
     })(req, res, next);
@@ -223,7 +221,7 @@ class UserController {
     const result = format(req);
     if (!result.isEmpty()) {
       return res.status(422).json({
-        error: errorController('USR_1001',  result.array(), result.array(), 422)
+        error: errorController('USR_1001', result.array(), result.array(), 422)
       });
     }
 
@@ -352,7 +350,7 @@ class UserController {
       }
       if (err || !user) {
         return res.status(400).json({
-          error:  errorController('USR_1012', 'error occurred', 'jwt login', 400)
+          error: errorController('USR_1012', 'error occurred', 'jwt login', 400)
         });
       }
       // eslint-disable-next-line consistent-return
@@ -386,7 +384,7 @@ class UserController {
           })
         // eslint-disable-next-line no-unused-vars
           .catch((_err) => res.status(400).json({
-            error: errorController('USR_1013', _err.message, 'messages crash', 400) 
+            error: errorController('USR_1013', _err.message, 'messages crash', 400)
           }));
       });
     })(req, res, next);
@@ -412,7 +410,7 @@ class UserController {
       const result = format(req);
       if (!result.isEmpty()) {
         return res.status(422).json({
-          error: errorController('USR_1014', result.array(), 'message, location', 422) 
+          error: errorController('USR_1014', result.array(), 'message, location', 422)
         });
       }
       if (err || !user) {
