@@ -1,6 +1,4 @@
 
-import { createdAt, updatedAt } from './migrationutil';
-
 module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.createTable('contactUs', {
     message_id: {
@@ -22,19 +20,27 @@ module.exports = {
         model: 'Users', // name of Source model
         key: 'user_id'
       },
-      email: {
-        type: Sequelize.STRING(100),
-        unique: false,
-        allowNull: true,
-        validate: {
-          isEmail: true
-        }
-      },
       onUpdate: 'CASCADE',
       onDelete: 'SET NULL'
     },
-    createdAt: createdAt(),
-    updatedAt: updatedAt()
+    email: {
+      type: Sequelize.STRING(100),
+      unique: false,
+      allowNull: true,
+      validate: {
+        isEmail: true
+      }
+    },
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+      defaultValue: new Date()
+    },
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+      defaultValue: new Date()
+    }
   }),
 
   // eslint-disable-next-line no-unused-vars

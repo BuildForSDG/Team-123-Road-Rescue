@@ -1,5 +1,3 @@
-import { createdAt, updatedAt } from './migrationutil';
-
 module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.createTable('Users', {
     user_id: {
@@ -36,8 +34,16 @@ module.exports = {
     postal_code: Sequelize.STRING(100),
     mob_phone: Sequelize.STRING(100),
 
-    createdAt: createdAt(),
-    updatedAt: updatedAt()
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+      defaultValue: new Date()
+    },
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+      defaultValue: new Date()
+    }
   }),
   // eslint-disable-next-line no-unused-vars
   down: (queryInterface, _Sequelize) => queryInterface.dropTable('Users')
