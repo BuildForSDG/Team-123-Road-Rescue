@@ -10,6 +10,17 @@ const secret = require('./jwtConfig');
 const { FACEBOOK_APP_ID } = require('./jwtConfig');
 const { FACEBOOK_APP_SECRET } = require('./jwtConfig');
 
+
+const passportCheck = (done, user) => {
+  if (!user) {
+    // If the user isn't found in the database, return a message
+    return done(null, false, { message: 'User not found' });
+  }
+
+  // Send the user information to the next middleware
+  return done(null, user, { message: 'Logged in Successfully' });
+};
+
 module.exports = () => {
   // A passport middleware to handle user registration
   passport.use(
@@ -89,19 +100,15 @@ module.exports = () => {
               email: token.email
             }
           });
-          if (!user) {
-          // If the user isn't found in the database, return a message
-            return done(null, false, { message: 'User not found' });
-          }
 
-          // Send the user information to the next middleware
-          return done(null, user, { message: 'Logged in Successfully' });
+          return passportCheck(done, user);
         } catch (error) {
           done(error);
         }
       }
     )
   );
+
 
   // A passport middleware to handle facebook  User login
   passport.use(
@@ -121,13 +128,7 @@ module.exports = () => {
               email: profile.emails[0].value
             }
           });
-          if (!user) {
-          // If the user isn't found in the database, return a message
-            return done(null, false, { message: 'User not found' });
-          }
-
-          // Send the user information to the next middleware
-          return done(null, user, { message: 'Logged in Successfully' });
+          return passportCheck(done, user);
         } catch (error) {
           return done(error);
         }
