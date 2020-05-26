@@ -398,37 +398,33 @@ class UserController {
   static async updateMessages(req, res, next) {
     // eslint-disable-next-line consistent-return
     passport.authenticate('jwt', async (err, user) => {
-      try {
-        const result = await format(req);
+      const result = await format(req);
 
-        if (!result.isEmpty()) {
-          return returnValidation(res, req, result, errorController('USR_1017', result.array(), 'message, location', 422));
-        }
-        if (err || !user) {
-          returnError400(res, errorController('USR_1018', 'Error occurred', 'jwt login', 400));
-        }
-        // eslint-disable-next-line consistent-return
-        req.login(user, { session: false }, async (error) => {
-          if (error) return next(error);
-
-          // We don't want to store the sensitive information such as the
-          // user password in the token so we pick only the email and id
-
-          // eslint-disable-next-line camelcase
-          const { message, message_id } = req.query;
-
-          UserMessages.update({ message },
-            { where: { message_id } })
-
-            .then((msg) => returnMsgStatus(msg, res, user))
-            // eslint-disable-next-line no-unused-vars
-            .catch((_err) => res.status(400).json({
-              error: errorController('USR_1019', _err.message, 'message crash', 400)
-            }));
-        });
-      } catch (error) {
-        return next(error);
+      if (!result.isEmpty()) {
+        return returnValidation(res, req, result, errorController('USR_1017', result.array(), 'message, location', 422));
       }
+      if (err || !user) {
+        returnError400(res, errorController('USR_1018', 'Error occurred', 'jwt login', 400));
+      }
+      // eslint-disable-next-line consistent-return
+      req.login(user, { session: false }, async (error) => {
+        if (error) return next(error);
+
+        // We don't want to store the sensitive information such as the
+        // user password in the token so we pick only the email and id
+
+        // eslint-disable-next-line camelcase
+        const { message, message_id } = req.query;
+
+        UserMessages.update({ message },
+          { returning: true, where: { message_id } })
+
+          .then((msg) => returnMsgStatus(msg, res, user))
+        // eslint-disable-next-line no-unused-vars
+          .catch((_err) => res.status(400).json({
+            error: errorController('USR_1019', _err.message, 'message crash', 400)
+          }));
+      });
     })(req, res, next);
   }
 
