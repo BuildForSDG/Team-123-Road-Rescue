@@ -76,7 +76,22 @@ const returnError400 = (res, errController) => res.status(400).json({
   error: errController
 });
 
+const returnError401 = (res, errController) => res.status(401).json({
+  error: errController
+});
+
+
 const returnToken = (user) => jwt.sign({ email: user.email }, `${secret}`, { expiresIn: '24h' });
+
+const returnMsgStatus = (msg, res, user) => res.status(200).json({
+
+  messages: destructMessages(msg),
+
+  user: destructUser(user),
+
+  accessToken: `Bearer ${returnToken(user)}`,
+  expiresIn: '24h'
+});
 module.exports = {
   format,
   destructUser,
@@ -86,5 +101,7 @@ module.exports = {
   returnValidation,
   returnError400,
   returnToken,
-  destructMessages
+  destructMessages,
+  returnError401,
+  returnMsgStatus
 };

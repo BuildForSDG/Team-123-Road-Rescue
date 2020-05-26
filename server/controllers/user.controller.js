@@ -5,7 +5,7 @@ import {
 } from '../database/models';
 import {
   format, destructUser, destructCrash, generateJwt, errorController, returnValidation,
-  returnError400, returnToken, destructMessages
+  returnError400, returnToken, destructMessages, returnError401, returnMsgStatus
 } from './controllerUtil';
 
 const jwt = require('jsonwebtoken');
@@ -112,9 +112,7 @@ class UserController {
       async (err, user) => {
         try {
           if (err || !user) {
-            return res.status(401).json({
-              error: errorController('USR_1004', 'errror occurred', 'The email/password login', 401)
-            });
+            return returnError401(res, errorController('USR_1004', 'error occuured', 'email/password login', 401));
           }
           // eslint-disable-next-line consistent-return
           req.login(user, { session: false }, async (error) => {
@@ -152,9 +150,6 @@ class UserController {
       // eslint-disable-next-line consistent-return
       req.login(user, { session: false }, async (error) => {
         if (error) return next(error);
-
-        // We don't want to store the sensitive information such as the
-        // user password in the token so we pick only the email and id
 
         const {
           // eslint-disable-next-line camelcase
@@ -326,9 +321,6 @@ class UserController {
       req.login(user, { session: false }, async (error) => {
         if (error) return next(error);
 
-        // We don't want to store the sensitive information such as the
-        // user password in the token so we pick only the email and id
-
         // eslint-disable-next-line camelcase
         const { user_id } = user;
 
@@ -377,24 +369,13 @@ class UserController {
       req.login(user, { session: false }, async (error) => {
         if (error) return next(error);
 
-        // We don't want to store the sensitive information such as the
-        // user password in the token so we pick only the email and id
-
         // eslint-disable-next-line camelcase
         const { user_id } = user;
         const { message } = req.query;
 
         UserMessages.create({ user_id, message })
 
-          .then((msg) => res.status(200).json({
-
-            messages: destructMessages(msg),
-
-            user: destructUser(user),
-
-            accessToken: `Bearer ${returnToken(user)}`,
-            expiresIn: '24h'
-          }))
+          .then((msg) => returnMsgStatus(msg, res, user))
         // eslint-disable-next-line no-unused-vars
           .catch((_err) => res.status(400).json({
             error: errorController('USR_1016', _err.message, 'messages', 400)
@@ -439,15 +420,7 @@ class UserController {
           UserMessages.update({ message },
             { where: { message_id } })
 
-            .then((msg) => res.status(200).json({
-
-              messages: destructMessages(msg),
-
-              user: destructUser(user),
-
-              accessToken: `Bearer ${returnToken(user)}`,
-              expiresIn: '24h'
-            }))
+            .then((msg) => returnMsgStatus(msg, res, user))
             // eslint-disable-next-line no-unused-vars
             .catch((_err) => res.status(400).json({
               error: errorController('USR_1019', _err.message, 'message crash', 400)
@@ -480,10 +453,7 @@ class UserController {
       async (err, user) => {
         try {
           if (err || !user) {
-            return res.status(401).json({
-              error: errorController('USR_1020', err.message, 'email/password login', 401)
-
-            });
+            return returnError401(res, errorController('USR_1020', err.message, 'email/password login', 401));
           }
           // eslint-disable-next-line consistent-return
           req.login(user, { session: false }, async (error) => {
@@ -520,10 +490,7 @@ class UserController {
       async (err, user) => {
         try {
           if (err || !user) {
-            return res.status(401).json({
-              error: errorController('USR_1022', err.message, 'email/password login', 401)
-
-            });
+            return returnError401(res, errorController('USR_1022', err.message, 'email/password login', 401));
           }
           // eslint-disable-next-line consistent-return
           req.login(user, { session: false }, async (error) => {
