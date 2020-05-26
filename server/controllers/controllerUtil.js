@@ -27,6 +27,11 @@ const destructCrash = (report) => ({
   video: report.video,
   message: report.message
 });
+const destructMessages = (msg) => ({
+  message_id: msg.message_id,
+  user_id: msg.user_id,
+  message: msg.message
+});
 
 const errorController = (code, message, field, status) => ({
   code,
@@ -70,6 +75,8 @@ const returnValidation = (res, _errorController) => res.status(422).json({
 const returnError400 = (res, errController) => res.status(400).json({
   error: errController
 });
+
+const returnToken = (user) => jwt.sign({ email: user.email }, `${secret}`, { expiresIn: '24h' });
 module.exports = {
   format,
   destructUser,
@@ -77,5 +84,7 @@ module.exports = {
   generateJwt,
   errorController,
   returnValidation,
-  returnError400
+  returnError400,
+  returnToken,
+  destructMessages
 };

@@ -5,7 +5,7 @@ import {
 } from '../database/models';
 import {
   format, destructUser, destructCrash, generateJwt, errorController, returnValidation,
-  returnError400
+  returnError400, returnToken, destructMessages
 } from './controllerUtil';
 
 const jwt = require('jsonwebtoken');
@@ -79,18 +79,12 @@ class UserController {
       address,
       state
     })
-      .then((user) => {
-        const payload = { email: user.email };
+      .then((user) => res.status(200).json({
+        user: destructUser(user),
 
-        const token = jwt.sign(payload, `${secret}`, { expiresIn: '24h' });
-
-        return res.status(200).json({
-          user: destructUser(user),
-
-          accessToken: `Bearer ${token}`,
-          expiresIn: '24h'
-        });
-      })
+        accessToken: `Bearer ${returnToken(user)}`,
+        expiresIn: '24h'
+      }))
     // eslint-disable-next-line no-unused-vars
       .catch((err) => res.status(400).json({
         error: errorController('USR_1003', err.message, 'register', 400)
@@ -146,10 +140,6 @@ class UserController {
    * @memberof UserController
    */
   static async crashReport(req, res, next) {
-    // eslint-disable-next-line no-unused-vars
-    // eslint-disable-next-line consistent-return
-
-
     // eslint-disable-next-line consistent-return
     passport.authenticate('jwt', async (err, user) => {
       const result = format(req);
@@ -176,21 +166,15 @@ class UserController {
         CrashReport.create({
           name, number_victims, location, user_id, image, video, message
         })
-          .then((report) => {
-            const payload = { email: user.email };
+          .then((report) => res.status(200).json({
 
-            const token = jwt.sign(payload, `${secret}`, { expiresIn: '24h' });
+            crashReport: destructCrash(report),
 
-            return res.status(200).json({
+            user: destructUser(user),
 
-              crashReport: destructCrash(report),
-
-              user: destructUser(user),
-
-              accessToken: `Bearer ${token}`,
-              expiresIn: '24h'
-            });
-          })
+            accessToken: `Bearer ${returnToken(user)}`,
+            expiresIn: '24h'
+          }))
         // eslint-disable-next-line no-unused-vars
           .catch((_err) => res.status(400).json({
             error: errorController('USR_1007', _err.message, 'crash report', 400)
@@ -330,10 +314,6 @@ class UserController {
   static async getUserMessages(req, res, next) {
     // eslint-disable-next-line no-unused-vars
     // eslint-disable-next-line consistent-return
-
-
-    // eslint-disable-next-line no-unused-vars
-    // eslint-disable-next-line consistent-return
     passport.authenticate('jwt', async (err, user) => {
       const result = format(req);
       if (!result.isEmpty()) {
@@ -354,23 +334,17 @@ class UserController {
 
         UserMessages.findAll({ where: { user_id } })
 
-          .then((msgs) => {
-            const payload = { email: user.email };
+          .then((msgs) => res.status(200).json({
 
-            const token = jwt.sign(payload, `${secret}`, { expiresIn: '24h' });
+            messages: {
+              rows: msgs
+            },
 
-            return res.status(200).json({
+            user: destructUser(user),
 
-              messages: {
-                rows: msgs
-              },
-
-              user: destructUser(user),
-
-              accessToken: `Bearer ${token}`,
-              expiresIn: '24h'
-            });
-          })
+            accessToken: `Bearer ${returnToken(user)}`,
+            expiresIn: '24h'
+          }))
         // eslint-disable-next-line no-unused-vars
           .catch((_err) => res.status(400).json({
             error: errorController('USR_1013', _err.message, 'messages crash', 400)
@@ -390,10 +364,6 @@ class UserController {
    * @memberof UserController
    */
   static async postMessages(req, res, next) {
-    // eslint-disable-next-line no-unused-vars
-    // eslint-disable-next-line consistent-return
-
-
     // eslint-disable-next-line consistent-return
     passport.authenticate('jwt', async (err, user) => {
       const result = format(req);
@@ -416,33 +386,15 @@ class UserController {
 
         UserMessages.create({ user_id, message })
 
-          .then((msg) => {
-            const payload = { email: user.email };
+          .then((msg) => res.status(200).json({
 
-            const token = jwt.sign(payload, `${secret}`, { expiresIn: '24h' });
+            messages: destructMessages(msg),
 
-            return res.status(200).json({
+            user: destructUser(user),
 
-              messages: {
-                message_id: msg.message_id,
-                user_id: msg.user_id,
-                message: msg.message
-
-              },
-
-              user: {
-                user_id: user.user_id,
-                name: user.name,
-                email: user.email,
-                address: user.address,
-                mob_phone: user.mob_phone,
-                state: user.state
-              },
-
-              accessToken: `Bearer ${token}`,
-              expiresIn: '24h'
-            });
-          })
+            accessToken: `Bearer ${returnToken(user)}`,
+            expiresIn: '24h'
+          }))
         // eslint-disable-next-line no-unused-vars
           .catch((_err) => res.status(400).json({
             error: errorController('USR_1016', _err.message, 'messages', 400)
@@ -463,10 +415,6 @@ class UserController {
    * @memberof UserController
    */
   static async updateMessages(req, res, next) {
-    // eslint-disable-next-line no-unused-vars
-    // eslint-disable-next-line consistent-return
-
-
     // eslint-disable-next-line consistent-return
     passport.authenticate('jwt', async (err, user) => {
       try {
@@ -491,26 +439,15 @@ class UserController {
           UserMessages.update({ message },
             { where: { message_id } })
 
-            .then((msg) => {
-              const payload = { email: user.email };
+            .then((msg) => res.status(200).json({
 
-              const token = jwt.sign(payload, `${secret}`, { expiresIn: '24h' });
+              messages: destructMessages(msg),
 
-              return res.status(200).json({
+              user: destructUser(user),
 
-                messages: {
-                  message_id: msg.message_id,
-                  user_id: msg.user_id,
-                  message: msg.message
-
-                },
-
-                user: destructUser(user),
-
-                accessToken: `Bearer ${token}`,
-                expiresIn: '24h'
-              });
-            })
+              accessToken: `Bearer ${returnToken(user)}`,
+              expiresIn: '24h'
+            }))
             // eslint-disable-next-line no-unused-vars
             .catch((_err) => res.status(400).json({
               error: errorController('USR_1019', _err.message, 'message crash', 400)
