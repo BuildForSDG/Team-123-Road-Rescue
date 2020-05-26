@@ -6,6 +6,17 @@ let accessToken;
 let message_id;
 // Set NOD_ENV = test
 process.env.NODE_ENV = 'test';
+const responseAssert = (response) => {
+  expect(response.body).toHaveProperty('user');
+  expect(response.body).toHaveProperty('accessToken');
+  expect(response.statusCode).toBe(200);
+};
+
+const responseAssertMsg = (response) => {
+  expect(response.body).toHaveProperty('user');
+  expect(response.body).toHaveProperty('messages');
+  expect(response.statusCode).toBe(200);
+};
 
 
 describe('User Controller Tests', () => {
@@ -30,11 +41,7 @@ describe('User Controller Tests', () => {
         address: '10 Marina Street, Lagos'
 
       });
-
-
-    expect(response.body).toHaveProperty('user');
-    expect(response.body).toHaveProperty('accessToken');
-    expect(response.statusCode).toBe(200);
+    responseAssert(response);
   });
 
 
@@ -51,9 +58,7 @@ describe('User Controller Tests', () => {
     accessToken = response.body.accessToken.split(' ')[1];
 
 
-    expect(response.body).toHaveProperty('user');
-    expect(response.body).toHaveProperty('accessToken');
-    expect(response.statusCode).toBe(200);
+    responseAssert(response);
   });
 
   test('Send crash report as a logged in user', async () => {
@@ -69,9 +74,7 @@ describe('User Controller Tests', () => {
         message: 'there was a small accident'
       });
 
-    expect(response.body).toHaveProperty('user');
-    expect(response.body).toHaveProperty('accessToken');
-    expect(response.statusCode).toBe(200);
+    responseAssert(response);
   });
 
   test('Failed crash report as a logged in user', async () => {
@@ -157,10 +160,7 @@ describe('User Controller Tests', () => {
 
     // eslint-disable-next-line camelcase
     message_id = response.body.messages.message_id;
-
-    expect(response.body).toHaveProperty('user');
-    expect(response.body).toHaveProperty('messages');
-    expect(response.statusCode).toBe(200);
+    responseAssertMsg(response);
   });
 
   test('Update message as a logged in user', async () => {
@@ -173,9 +173,7 @@ describe('User Controller Tests', () => {
       });
 
 
-    expect(response.body).toHaveProperty('user');
-    expect(response.body).toHaveProperty('messages');
-    expect(response.statusCode).toBe(200);
+    responseAssertMsg(response);
   });
 
   it('should retrive all user message as a logged in user', async () => {
@@ -211,8 +209,6 @@ describe('User Controller Tests', () => {
 
       });
 
-    expect(response.body).toHaveProperty('user');
-    expect(response.body).toHaveProperty('accessToken');
-    expect(response.statusCode).toBe(200);
+    responseAssert(response);
   });
 });

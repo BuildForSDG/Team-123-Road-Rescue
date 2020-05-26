@@ -3,10 +3,9 @@
 import {
   Users, CrashReport, ContactUs, UserMessages
 } from '../database/models';
-import format from './util';
+import { format, destructUser, destructCrash } from './util';
 
 const passport = require('passport');
-const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const secret = require('../authenticationConfig/jwtConfig');
 
@@ -172,14 +171,7 @@ class UserController {
               }
 
               return res.status(200).json({
-                user: {
-                  user_id: user.user_id,
-                  name: user.name,
-                  email: user.email,
-                  address: user.address,
-                  mob_phone: user.mob_phone,
-                  state: user.state
-                },
+                user: destructUser(user),
                 accessToken: `Bearer ${token}`,
                 expiresIn: '24h'
               });
@@ -255,25 +247,9 @@ class UserController {
 
             return res.status(200).json({
 
-              crashReport: {
-                name: report.name,
-                number_victims: report.number_victims,
-                location: report.location,
-                user_id: report.user_id,
-                image: report.image,
-                video: report.video,
-                message: report.message
+              crashReport: destructCrash(report),
 
-              },
-
-              user: {
-                user_id: user.user_id,
-                name: user.name,
-                email: user.email,
-                address: user.address,
-                mob_phone: user.mob_phone,
-                state: user.state
-              },
+              user: destructUser(user),
 
               accessToken: `Bearer ${token}`,
               expiresIn: '24h'
@@ -333,16 +309,7 @@ class UserController {
     })
       .then((report) => res.status(200).json({
 
-        crashReport: {
-          name: report.name,
-          number_victims: report.number_victims,
-          location: report.location,
-          user_id: report.user_id,
-          image: report.image,
-          video: report.video,
-          message: report.message
-
-        }
+        crashReport: destructCrash(report)
       }))
       // eslint-disable-next-line no-unused-vars
       .catch((_err) => res.status(400).json({
@@ -505,14 +472,7 @@ class UserController {
                 rows: msgs
               },
 
-              user: {
-                user_id: user.user_id,
-                name: user.name,
-                email: user.email,
-                address: user.address,
-                mob_phone: user.mob_phone,
-                state: user.state
-              },
+              user: destructUser(user),
 
               accessToken: `Bearer ${token}`,
               expiresIn: '24h'
