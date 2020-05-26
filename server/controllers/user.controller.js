@@ -40,84 +40,81 @@ class UserController {
    */
 
   // eslint-disable-next-line consistent-return
-  static async create(req, res, next) {
-    try {
-      const errorFormatter = ({ location, msg, param }) => `${location}[${param}]: ${msg}`;
-      const result = validationResult(req).formatWith(errorFormatter);
-      if (!result.isEmpty()) {
-        return res.status(422).json({
-          error: {
-            code: 'USR_1001',
+  // eslint-disable-next-line no-unused-vars
+  static async create(req, res, _next) {
+    const errorFormatter = ({ location, msg, param }) => `${location}[${param}]: ${msg}`;
+    const result = validationResult(req).formatWith(errorFormatter);
+    if (!result.isEmpty()) {
+      return res.status(422).json({
+        error: {
+          code: 'USR_1001',
             message: result.array(),  // eslint-disable-line
-            field: 'email',
-            status: 422
-          }
-        });
-      }
-
-
-      const {
-        // eslint-disable-next-line camelcase
-        email, name, password, mob_phone, address, state
-      } = req.query;
-
-      const userx = await Users.findOne({
-        where: {
-          // eslint-disable-next-line object-shorthand
-          email: email
+          field: 'email',
+          status: 422
         }
       });
-
-      if (userx) {
-        return res.status(400).json({
-          error: {
-            code: 'USR_1002',
-            message: `The email already exists.`,  // eslint-disable-line
-            field: 'email',
-            status: 400
-          }
-        });
-      }
-
-      Users.create({
-        email,
-        password,
-        name,
-        mob_phone,
-        address,
-        state
-      })
-        .then((user) => {
-          const payload = { email: user.email };
-
-          const token = jwt.sign(payload, `${secret}`, { expiresIn: '24h' });
-
-          return res.status(200).json({
-            user: {
-              user_id: user.user_id,
-              name: user.name,
-              email: user.email,
-              address: user.address,
-              mob_phone: user.mob_phone,
-              state: user.state
-            },
-
-            accessToken: `Bearer ${token}`,
-            expiresIn: '24h'
-          });
-        })
-        // eslint-disable-next-line no-unused-vars
-        .catch((_err) => res.status(400).json({
-          error: {
-            code: 'USR_1003',
-            message: _err.message,  // eslint-disable-line
-            field: 'register',
-            status: 400
-          }
-        }));
-    } catch (error) {
-      return next(error);
     }
+
+
+    const {
+      // eslint-disable-next-line camelcase
+      email, name, password, mob_phone, address, state
+    } = req.query;
+
+    const userx = await Users.findOne({
+      where: {
+        // eslint-disable-next-line object-shorthand
+        email: email
+      }
+    });
+
+    if (userx) {
+      return res.status(400).json({
+        error: {
+          code: 'USR_1002',
+            message: `The email already exists.`,  // eslint-disable-line
+          field: 'email',
+          status: 400
+        }
+      });
+    }
+
+    Users.create({
+      email,
+      password,
+      name,
+      mob_phone,
+      address,
+      state
+    })
+      .then((user) => {
+        const payload = { email: user.email };
+
+        const token = jwt.sign(payload, `${secret}`, { expiresIn: '24h' });
+
+        return res.status(200).json({
+          user: {
+            user_id: user.user_id,
+            name: user.name,
+            email: user.email,
+            address: user.address,
+            mob_phone: user.mob_phone,
+            state: user.state
+          },
+
+          accessToken: `Bearer ${token}`,
+          expiresIn: '24h'
+        });
+      })
+    // eslint-disable-next-line no-unused-vars
+      .catch((_err) => res.status(400).json({
+        error: {
+          code: 'USR_1003',
+            message: _err.message,  // eslint-disable-line
+          field: 'register',
+          status: 400
+        }
+      }));
   }
 
   /**
@@ -690,7 +687,7 @@ class UserController {
           // eslint-disable-next-line camelcase
           const { message, message_id } = req.query;
 
-          UserMessages.create({ message },
+          UserMessages.update({ message },
             { where: { message_id } })
 
             .then((msg) => {
