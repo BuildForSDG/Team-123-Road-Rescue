@@ -4,7 +4,7 @@ import {
   Users, CrashReport, ContactUs, UserMessages
 } from '../database/models';
 import {
-  format, destructUser, destructCrash, generateJwt
+  format, destructUser, destructCrash, generateJwt, errorController
 } from './controllerUtil';
 
 const jwt = require('jsonwebtoken');
@@ -49,12 +49,7 @@ class UserController {
     const result = format(req);
     if (!result.isEmpty()) {
       return res.status(422).json({
-        error: {
-          code: 'USR_1001',
-            message: result.array(),  // eslint-disable-line
-          field: 'email',
-          status: 422
-        }
+        error: errorController('USR_1001', result.array(), 'email', 422)
       });
     }
 
@@ -73,12 +68,7 @@ class UserController {
 
     if (userx) {
       return res.status(400).json({
-        error: {
-          code: 'USR_1002',
-            message: `The email already exists.`,  // eslint-disable-line
-          field: 'email',
-          status: 400
-        }
+        error: errorController('USR_1002', 'The email already exists.', 'email', 400)
       });
     }
 
@@ -103,13 +93,8 @@ class UserController {
         });
       })
     // eslint-disable-next-line no-unused-vars
-      .catch((_err) => res.status(400).json({
-        error: {
-          code: 'USR_1003',
-            message: _err.message,  // eslint-disable-line
-          field: 'register',
-          status: 400
-        }
+      .catch((err) => res.status(400).json({
+        error: errorController('USR_1003', err.message, 'register', 400)
       }));
   }
 
@@ -135,12 +120,7 @@ class UserController {
         try {
           if (err || !user) {
             return res.status(401).json({
-              error: {
-                code: 'USR_1004',
-                message: `Error occurred`,  // eslint-disable-line
-                field: 'email/password login,  ',
-                status: 401
-              }
+              error: errorController('USR_1004', 'errror occurred', 'The email/password login', 401)
             });
           }
           // eslint-disable-next-line consistent-return
@@ -176,22 +156,12 @@ class UserController {
       const result = format(req);
       if (!result.isEmpty()) {
         return res.status(422).json({
-          error: {
-            code: 'USR_1001',
-              message: result.array(),  // eslint-disable-line
-            field: 'message, location',
-            status: 422
-          }
+          error: errorController('USR_1005', result.array(), 'message, location', 422)
         });
       }
       if (err || !user) {
         return res.status(400).json({
-          error: {
-            code: 'USR_1006',
-              message: `Error occurred`,  // eslint-disable-line
-            field: 'jwt login,  ',
-            status: 400
-          }
+          error: errorController('USR_1006', 'Error occurred', 'jwt login', 400)
         });
       }
       // eslint-disable-next-line consistent-return
@@ -227,13 +197,8 @@ class UserController {
             });
           })
         // eslint-disable-next-line no-unused-vars
-          .catch((_err) => res.status(400).json({
-            error: {
-              code: 'USR_1007',
-                message: _err.message,  // eslint-disable-line
-              field: 'crash report',
-              status: 400
-            }
+          .catch(err  => res.status(400).json({
+            error: errorController('USR_1007', err.message, 'crash report', 400)
           }));
       });
     })(req, res, next);
@@ -258,12 +223,7 @@ class UserController {
     const result = format(req);
     if (!result.isEmpty()) {
       return res.status(422).json({
-        error: {
-          code: 'USR_1001',
-          message: result.array(),  // eslint-disable-line
-          field: 'message, location',
-          status: 422
-        }
+        error: errorController('USR_1001',  result.array(), result.array(), 422)
       });
     }
 
@@ -284,12 +244,7 @@ class UserController {
       }))
       // eslint-disable-next-line no-unused-vars
       .catch((_err) => res.status(400).json({
-        error: {
-          code: 'USR_1008',
-          message: _err.message,  // eslint-disable-line
-          field: 'crash report',
-          status: 400
-        }
+        error: errorController('USR_1008', _err.message, 'rash', 400)
       }));
   }
 
@@ -315,12 +270,7 @@ class UserController {
     const result = format(req);
     if (!result.isEmpty()) {
       return res.status(422).json({
-        error: {
-          code: 'USR_1009',
-          message: result.array(),  // eslint-disable-line
-          field: 'email, location',
-          status: 422
-        }
+        error: errorController('USR_1009', result.array(), 'email, location', 422)
       });
     }
 
@@ -372,12 +322,7 @@ class UserController {
       }))
       // eslint-disable-next-line no-unused-vars
       .catch((_err) => res.status(400).json({
-        error: {
-          code: 'USR_1010',
-          message: _err.message,  // eslint-disable-line
-          field: 'contactus',
-          status: 400
-        }
+        error: errorController('USR_1010', _err.message, 'contactus', 400)
       }));
   }
 
@@ -402,22 +347,12 @@ class UserController {
       const result = format(req);
       if (!result.isEmpty()) {
         return res.status(422).json({
-          error: {
-            code: 'USR_1011',
-              message: result.array(),  // eslint-disable-line
-            field: 'message, location',
-            status: 422
-          }
+          error: errorController('USR_1011', result.array(), 'message, location', 422)
         });
       }
       if (err || !user) {
         return res.status(400).json({
-          error: {
-            code: 'USR_1012',
-              message: `Error occurred`,  // eslint-disable-line
-            field: 'jwt login,  ',
-            status: 400
-          }
+          error:  errorController('USR_1012', 'error occurred', 'jwt login', 400)
         });
       }
       // eslint-disable-next-line consistent-return
@@ -451,12 +386,7 @@ class UserController {
           })
         // eslint-disable-next-line no-unused-vars
           .catch((_err) => res.status(400).json({
-            error: {
-              code: 'USR_1013',
-                message: _err.message,  // eslint-disable-line
-              field: 'messages crash',
-              status: 400
-            }
+            error: errorController('USR_1013', _err.message, 'messages crash', 400) 
           }));
       });
     })(req, res, next);
@@ -482,22 +412,12 @@ class UserController {
       const result = format(req);
       if (!result.isEmpty()) {
         return res.status(422).json({
-          error: {
-            code: 'USR_1014',
-              message: result.array(),  // eslint-disable-line
-            field: 'message, location',
-            status: 422
-          }
+          error: errorController('USR_1014', result.array(), 'message, location', 422) 
         });
       }
       if (err || !user) {
         return res.status(400).json({
-          error: {
-            code: 'USR_1015',
-              message: `Error occurred`,  // eslint-disable-line
-            field: 'jwt login,  ',
-            status: 400
-          }
+          error: errorController('USR_1015', 'Error occurred', 'jwt login', 400)
         });
       }
       // eslint-disable-next-line consistent-return
@@ -542,12 +462,7 @@ class UserController {
           })
         // eslint-disable-next-line no-unused-vars
           .catch((_err) => res.status(400).json({
-            error: {
-              code: 'USR_1016',
-                message: _err.message,  // eslint-disable-line
-              field: 'messages crash',
-              status: 400
-            }
+            error: errorController('USR_1016', _err.message, 'messages', 400)
           }));
       });
     })(req, res, next);
@@ -576,22 +491,13 @@ class UserController {
 
         if (!result.isEmpty()) {
           return res.status(422).json({
-            error: {
-              code: 'USR_1017',
-              message: result.array(),  // eslint-disable-line
-              field: 'message, location',
-              status: 422
-            }
+            error: errorController('USR_1017', result.array(), 'message, location', 422)
           });
         }
         if (err || !user) {
           return res.status(400).json({
-            error: {
-              code: 'USR_1018',
-              message: `Error occurred`,  // eslint-disable-line
-              field: 'jwt login,  ',
-              status: 400
-            }
+            error: errorController('USR_1018', 'Error occurred', 'jwt login', 400)
+
           });
         }
         // eslint-disable-next-line consistent-return
@@ -629,12 +535,7 @@ class UserController {
             })
             // eslint-disable-next-line no-unused-vars
             .catch((_err) => res.status(400).json({
-              error: {
-                code: 'USR_1019',
-                message: _err.message,  // eslint-disable-line
-                field: 'messages crash',
-                status: 400
-              }
+              error: errorController('USR_1019', _err.message, 'message crash', 400)
             }));
         });
       } catch (error) {
@@ -665,12 +566,8 @@ class UserController {
         try {
           if (err || !user) {
             return res.status(401).json({
-              error: {
-                code: 'USR_1020',
-                message: `Error occurred`,  // eslint-disable-line
-                field: 'email/password login,  ',
-                status: 401
-              }
+              error: errorController('USR_1020', err.message, 'email/password login', 401)
+
             });
           }
           // eslint-disable-next-line consistent-return
@@ -709,12 +606,8 @@ class UserController {
         try {
           if (err || !user) {
             return res.status(401).json({
-              error: {
-                code: 'USR_1022',
-                message: `Error occurred`,  // eslint-disable-line
-                field: 'email/password login,  ',
-                status: 401
-              }
+              error: errorController('USR_1022', err.message, 'email/password login', 401)
+
             });
           }
           // eslint-disable-next-line consistent-return
@@ -757,12 +650,7 @@ class UserController {
               })
               // eslint-disable-next-line no-unused-vars
               .catch((_err) => res.status(400).json({
-                error: {
-                  code: 'USR_1023',
-                  message: _err.message,  // eslint-disable-line
-                  field: 'crash report',
-                  status: 400
-                }
+                error: errorController('USR_1023', err.message, 'crash report', 400)
               }));
           });
         } catch (error) {

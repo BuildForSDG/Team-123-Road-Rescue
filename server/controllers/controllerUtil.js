@@ -28,6 +28,14 @@ const destructCrash = (report) => ({
   message: report.message
 });
 
+const errorController = (code, message, field, status) => ({
+  code,
+  message,
+  field,
+  status
+});
+
+
 const generateJwt = (user, res, code, message, field, status) => {
   // We don't want to store the sensitive information such as the
   // user password in the token so we pick only the email and id
@@ -60,5 +68,6 @@ module.exports = {
   format,
   destructUser,
   destructCrash,
-  generateJwt
+  generateJwt,
+  errorController
 };
