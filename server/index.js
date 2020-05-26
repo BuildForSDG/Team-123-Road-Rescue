@@ -1,10 +1,10 @@
 
-import cors from 'cors';
-import express from 'express';
-import dotenv from 'dotenv';
-import helmet from 'helmet';
-import compression from 'compression';
-import router from './routes';
+const dotenv = require('dotenv');
+const helmet = require('helmet');
+const compression = require('compression');
+
+const cors = require('cors');
+const express = require('express');
 
 const path = require('path');
 
@@ -25,6 +25,7 @@ app.use(express.static('dist'));
 
 // initializes the passport configuration.
 const passport = require('passport');
+const router = require('./routes');
 
 app.use(passport.initialize());
 app.use(passport.session());

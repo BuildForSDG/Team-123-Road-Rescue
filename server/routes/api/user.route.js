@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
-import { Router } from 'express';
-import UserController from '../../controllers/user.controller';
+const { Router } = require('express');
 
 const { check } = require('express-validator');
 
 const passport = require('passport');
+const UserController = require('../../controllers/user.controller');
 
 const router = Router();
 
@@ -123,4 +123,4 @@ router.put(
 
   UserController.updateUser
 );
-export default router;
+module.exports = router;

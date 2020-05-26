@@ -1,15 +1,15 @@
 /* eslint-disable consistent-return */
 
-import {
-  Users, CrashReport, ContactUs, UserMessages
-} from '../database/models';
-import {
-  format, destructUser, destructCrash, generateJwt, errorController, returnValidation,
-  returnError400, returnToken, returnError401, returnMsgStatus, twentyfour
-} from './controllerUtil';
-
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
+const {
+  Users, CrashReport, ContactUs, UserMessages
+} = require('../database/models');
+const {
+  format, destructUser, destructCrash, generateJwt, errorController, returnValidation,
+  returnError400, returnToken, returnError401, returnMsgStatus, twentyfour
+} = require('./controllerUtil');
+
 const secret = require('../authenticationConfig/jwtConfig');
 
 
@@ -534,4 +534,4 @@ class UserController {
 }
 
 
-export default UserController;
+module.exports = UserController;
