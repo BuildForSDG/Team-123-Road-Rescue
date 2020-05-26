@@ -3,11 +3,13 @@
 import {
   Users, CrashReport, ContactUs, UserMessages
 } from '../database/models';
+import format from './util';
 
 const passport = require('passport');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const secret = require('../authenticationConfig/jwtConfig');
+
 
 /**
 *
@@ -43,8 +45,7 @@ class UserController {
   // eslint-disable-next-line consistent-return
   // eslint-disable-next-line no-unused-vars
   static async create(req, res, _next) {
-    const errorFormatter = ({ location, msg, param }) => `${location}[${param}]: ${msg}`;
-    const result = validationResult(req).formatWith(errorFormatter);
+    const result = format(req);
     if (!result.isEmpty()) {
       return res.status(422).json({
         error: {
@@ -209,8 +210,7 @@ class UserController {
 
     // eslint-disable-next-line consistent-return
     passport.authenticate('jwt', async (err, user) => {
-      const errorFormatter = ({ location, msg, param }) => `${location}[${param}]: ${msg}`;
-      const result = validationResult(req).formatWith(errorFormatter);
+      const result = format(req);
       if (!result.isEmpty()) {
         return res.status(422).json({
           error: {
@@ -308,8 +308,7 @@ class UserController {
     // eslint-disable-next-line no-unused-vars
     // eslint-disable-next-line consistent-return
 
-    const errorFormatter = ({ location, msg, param }) => `${location}[${param}]: ${msg}`;
-    const result = validationResult(req).formatWith(errorFormatter);
+    const result = format(req);
     if (!result.isEmpty()) {
       return res.status(422).json({
         error: {
@@ -375,8 +374,7 @@ class UserController {
     // eslint-disable-next-line no-unused-vars
     // eslint-disable-next-line consistent-return
 
-    const errorFormatter = ({ location, msg, param }) => `${location}[${param}]: ${msg}`;
-    const result = validationResult(req).formatWith(errorFormatter);
+    const result = format(req);
     if (!result.isEmpty()) {
       return res.status(422).json({
         error: {
@@ -463,8 +461,7 @@ class UserController {
     // eslint-disable-next-line no-unused-vars
     // eslint-disable-next-line consistent-return
     passport.authenticate('jwt', async (err, user) => {
-      const errorFormatter = ({ location, msg, param }) => `${location}[${param}]: ${msg}`;
-      const result = validationResult(req).formatWith(errorFormatter);
+      const result = format(req);
       if (!result.isEmpty()) {
         return res.status(422).json({
           error: {
@@ -551,84 +548,80 @@ class UserController {
 
     // eslint-disable-next-line consistent-return
     passport.authenticate('jwt', async (err, user) => {
-      try {
-        const errorFormatter = ({ location, msg, param }) => `${location}[${param}]: ${msg}`;
-        const result = validationResult(req).formatWith(errorFormatter);
-        if (!result.isEmpty()) {
-          return res.status(422).json({
-            error: {
-              code: 'USR_1014',
+      const result = format(req);
+      if (!result.isEmpty()) {
+        return res.status(422).json({
+          error: {
+            code: 'USR_1014',
               message: result.array(),  // eslint-disable-line
-              field: 'message, location',
-              status: 422
-            }
-          });
-        }
-        if (err || !user) {
-          return res.status(400).json({
-            error: {
-              code: 'USR_1015',
+            field: 'message, location',
+            status: 422
+          }
+        });
+      }
+      if (err || !user) {
+        return res.status(400).json({
+          error: {
+            code: 'USR_1015',
               message: `Error occurred`,  // eslint-disable-line
-              field: 'jwt login,  ',
+            field: 'jwt login,  ',
+            status: 400
+          }
+        });
+      }
+      // eslint-disable-next-line consistent-return
+      req.login(user, { session: false }, async (error) => {
+        if (error) return next(error);
+
+        // We don't want to store the sensitive information such as the
+        // user password in the token so we pick only the email and id
+
+        // eslint-disable-next-line camelcase
+        const { user_id } = user;
+        const { message } = req.query;
+
+        UserMessages.create({ user_id, message })
+
+          .then((msg) => {
+            const payload = { email: user.email };
+
+            const token = jwt.sign(payload, `${secret}`, { expiresIn: '24h' });
+
+            return res.status(200).json({
+
+              messages: {
+                message_id: msg.message_id,
+                user_id: msg.user_id,
+                message: msg.message
+
+              },
+
+              user: {
+                user_id: user.user_id,
+                name: user.name,
+                email: user.email,
+                address: user.address,
+                mob_phone: user.mob_phone,
+                state: user.state
+              },
+
+              accessToken: `Bearer ${token}`,
+              expiresIn: '24h'
+            });
+          })
+        // eslint-disable-next-line no-unused-vars
+          .catch((_err) => res.status(400).json({
+            error: {
+              code: 'USR_1016',
+                message: _err.message,  // eslint-disable-line
+              field: 'messages crash',
               status: 400
             }
-          });
-        }
-        // eslint-disable-next-line consistent-return
-        req.login(user, { session: false }, async (error) => {
-          if (error) return next(error);
-
-          // We don't want to store the sensitive information such as the
-          // user password in the token so we pick only the email and id
-
-          // eslint-disable-next-line camelcase
-          const { user_id } = user;
-          const { message } = req.query;
-
-          UserMessages.create({ user_id, message })
-
-            .then((msg) => {
-              const payload = { email: user.email };
-
-              const token = jwt.sign(payload, `${secret}`, { expiresIn: '24h' });
-
-              return res.status(200).json({
-
-                messages: {
-                  message_id: msg.message_id,
-                  user_id: msg.user_id,
-                  message: msg.message
-
-                },
-
-                user: {
-                  user_id: user.user_id,
-                  name: user.name,
-                  email: user.email,
-                  address: user.address,
-                  mob_phone: user.mob_phone,
-                  state: user.state
-                },
-
-                accessToken: `Bearer ${token}`,
-                expiresIn: '24h'
-              });
-            })
-            // eslint-disable-next-line no-unused-vars
-            .catch((_err) => res.status(400).json({
-              error: {
-                code: 'USR_1016',
-                message: _err.message,  // eslint-disable-line
-                field: 'messages crash',
-                status: 400
-              }
-            }));
-        });
-      } catch (error) {
-        return next(error);
-      }
+          }));
+      });
     })(req, res, next);
   }
+
 
   /**
    * All user messages
@@ -648,8 +641,8 @@ class UserController {
     // eslint-disable-next-line consistent-return
     passport.authenticate('jwt', async (err, user) => {
       try {
-        const errorFormatter = ({ location, msg, param }) => `${location}[${param}]: ${msg}`;
-        const result = validationResult(req).formatWith(errorFormatter);
+        const result = await format(req);
+
         if (!result.isEmpty()) {
           return res.status(422).json({
             error: {
