@@ -113,17 +113,13 @@ module.exports = () => {
       },
       // eslint-disable-next-line func-names
       async (_accessToken, _refreshToken, profile, done) => {
-        try {
-          const user = await User.findOne({
-            where: {
+        const user = await User.findOne({
+          where: {
             // eslint-disable-next-line object-shorthand
-              email: profile.emails[0].value
-            }
-          });
-          return passportCheck(done, user);
-        } catch (error) {
-          return done(error);
-        }
+            email: profile.emails[0].value
+          }
+        });
+        return passportCheck(done, user);
       }
     )
   );

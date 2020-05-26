@@ -463,78 +463,74 @@ class UserController {
     // eslint-disable-next-line no-unused-vars
     // eslint-disable-next-line consistent-return
     passport.authenticate('jwt', async (err, user) => {
-      try {
-        const errorFormatter = ({ location, msg, param }) => `${location}[${param}]: ${msg}`;
-        const result = validationResult(req).formatWith(errorFormatter);
-        if (!result.isEmpty()) {
-          return res.status(422).json({
-            error: {
-              code: 'USR_1011',
+      const errorFormatter = ({ location, msg, param }) => `${location}[${param}]: ${msg}`;
+      const result = validationResult(req).formatWith(errorFormatter);
+      if (!result.isEmpty()) {
+        return res.status(422).json({
+          error: {
+            code: 'USR_1011',
               message: result.array(),  // eslint-disable-line
-              field: 'message, location',
-              status: 422
-            }
-          });
-        }
-        if (err || !user) {
-          return res.status(400).json({
-            error: {
-              code: 'USR_1012',
+            field: 'message, location',
+            status: 422
+          }
+        });
+      }
+      if (err || !user) {
+        return res.status(400).json({
+          error: {
+            code: 'USR_1012',
               message: `Error occurred`,  // eslint-disable-line
-              field: 'jwt login,  ',
+            field: 'jwt login,  ',
+            status: 400
+          }
+        });
+      }
+      // eslint-disable-next-line consistent-return
+      req.login(user, { session: false }, async (error) => {
+        if (error) return next(error);
+
+        // We don't want to store the sensitive information such as the
+        // user password in the token so we pick only the email and id
+
+        // eslint-disable-next-line camelcase
+        const { user_id } = user;
+
+        UserMessages.findAll({ where: { user_id } })
+
+          .then((msgs) => {
+            const payload = { email: user.email };
+
+            const token = jwt.sign(payload, `${secret}`, { expiresIn: '24h' });
+
+            return res.status(200).json({
+
+              messages: {
+                rows: msgs
+              },
+
+              user: {
+                user_id: user.user_id,
+                name: user.name,
+                email: user.email,
+                address: user.address,
+                mob_phone: user.mob_phone,
+                state: user.state
+              },
+
+              accessToken: `Bearer ${token}`,
+              expiresIn: '24h'
+            });
+          })
+        // eslint-disable-next-line no-unused-vars
+          .catch((_err) => res.status(400).json({
+            error: {
+              code: 'USR_1013',
+                message: _err.message,  // eslint-disable-line
+              field: 'messages crash',
               status: 400
             }
-          });
-        }
-        // eslint-disable-next-line consistent-return
-        req.login(user, { session: false }, async (error) => {
-          if (error) return next(error);
-
-          // We don't want to store the sensitive information such as the
-          // user password in the token so we pick only the email and id
-
-          // eslint-disable-next-line camelcase
-          const { user_id } = user;
-
-          UserMessages.findAll({ where: { user_id } })
-
-            .then((msgs) => {
-              const payload = { email: user.email };
-
-              const token = jwt.sign(payload, `${secret}`, { expiresIn: '24h' });
-
-              return res.status(200).json({
-
-                messages: {
-                  rows: msgs
-                },
-
-                user: {
-                  user_id: user.user_id,
-                  name: user.name,
-                  email: user.email,
-                  address: user.address,
-                  mob_phone: user.mob_phone,
-                  state: user.state
-                },
-
-                accessToken: `Bearer ${token}`,
-                expiresIn: '24h'
-              });
-            })
-            // eslint-disable-next-line no-unused-vars
-            .catch((_err) => res.status(400).json({
-              error: {
-                code: 'USR_1013',
-                message: _err.message,  // eslint-disable-line
-                field: 'messages crash',
-                status: 400
-              }
-            }));
-        });
-      } catch (error) {
-        return next(error);
-      }
+          }));
+      });
     })(req, res, next);
   }
 
