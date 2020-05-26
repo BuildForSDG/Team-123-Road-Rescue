@@ -4,7 +4,8 @@ import {
   Users, CrashReport, ContactUs, UserMessages
 } from '../database/models';
 import {
-  format, destructUser, destructCrash, generateJwt, errorController, returnValidation
+  format, destructUser, destructCrash, generateJwt, errorController, returnValidation,
+  returnError400
 } from './controllerUtil';
 
 const jwt = require('jsonwebtoken');
@@ -48,7 +49,7 @@ class UserController {
   static async create(req, res, _next) {
     const result = format(req);
     if (!result.isEmpty()) {
-      return returnValidation(res, req, result);
+      return returnValidation(res, req, result, errorController('USR_1001', result.array(), 'email', 422));
     }
 
 
@@ -153,14 +154,10 @@ class UserController {
     passport.authenticate('jwt', async (err, user) => {
       const result = format(req);
       if (!result.isEmpty()) {
-        return res.status(422).json({
-          error: errorController('USR_1005', result.array(), 'message, location', 422)
-        });
+        return returnValidation(res, result, errorController('USR_1005', result.array(), 'message, location', 422));
       }
       if (err || !user) {
-        return res.status(400).json({
-          error: errorController('USR_1006', 'Error occurred', 'jwt login', 400)
-        });
+        returnError400(res, errorController('USR_1006', 'Error occurred', 'jwt login', 400));
       }
       // eslint-disable-next-line consistent-return
       req.login(user, { session: false }, async (error) => {
@@ -220,9 +217,7 @@ class UserController {
 
     const result = format(req);
     if (!result.isEmpty()) {
-      return res.status(422).json({
-        error: errorController('USR_1001', result.array(), result.array(), 422)
-      });
+      return returnValidation(res, result, errorController('USR_1001', result.array(), result.array(), 422));
     }
 
 
@@ -267,9 +262,7 @@ class UserController {
 
     const result = format(req);
     if (!result.isEmpty()) {
-      return res.status(422).json({
-        error: errorController('USR_1009', result.array(), 'email, location', 422)
-      });
+      return returnValidation(res, result, errorController('USR_1009', result.array(), 'email, location', 422));
     }
 
 
@@ -344,14 +337,10 @@ class UserController {
     passport.authenticate('jwt', async (err, user) => {
       const result = format(req);
       if (!result.isEmpty()) {
-        return res.status(422).json({
-          error: errorController('USR_1011', result.array(), 'message, location', 422)
-        });
+        return returnValidation(res, result, errorController('USR_1011', result.array(), 'message, location', 422));
       }
       if (err || !user) {
-        return res.status(400).json({
-          error: errorController('USR_1012', 'error occurred', 'jwt login', 400)
-        });
+        returnError400(res, errorController('USR_1012', 'Error occurred', 'jwt login', 400));
       }
       // eslint-disable-next-line consistent-return
       req.login(user, { session: false }, async (error) => {
@@ -409,14 +398,10 @@ class UserController {
     passport.authenticate('jwt', async (err, user) => {
       const result = format(req);
       if (!result.isEmpty()) {
-        return res.status(422).json({
-          error: errorController('USR_1014', result.array(), 'message, location', 422)
-        });
+        return returnValidation(res, result, errorController('USR_1014', result.array(), 'message, location', 422));
       }
       if (err || !user) {
-        return res.status(400).json({
-          error: errorController('USR_1015', 'Error occurred', 'jwt login', 400)
-        });
+        return returnError400(res, errorController('USR_1015', 'Error occurred', 'jwt login', 400));
       }
       // eslint-disable-next-line consistent-return
       req.login(user, { session: false }, async (error) => {
@@ -488,15 +473,10 @@ class UserController {
         const result = await format(req);
 
         if (!result.isEmpty()) {
-          return res.status(422).json({
-            error: errorController('USR_1017', result.array(), 'message, location', 422)
-          });
+          return returnValidation(res, req, result, errorController('USR_1017', result.array(), 'message, location', 422));
         }
         if (err || !user) {
-          return res.status(400).json({
-            error: errorController('USR_1018', 'Error occurred', 'jwt login', 400)
-
-          });
+          returnError400(res, errorController('USR_1018', 'Error occurred', 'jwt login', 400));
         }
         // eslint-disable-next-line consistent-return
         req.login(user, { session: false }, async (error) => {
