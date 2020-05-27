@@ -24,8 +24,15 @@ describe('User Controller Tests', () => {
     .toString(36)
     .substring(7);
 
-  afterAll((done) => {
+  afterAll(async (done) => {
+    // avoid jest open handle error
+    await new Promise((resolve) => setTimeout(() => resolve(), 10000));
     app.close(done);
+  });
+
+
+  afterAll(async () => {
+
   });
 
 
@@ -195,7 +202,7 @@ describe('User Controller Tests', () => {
     expect(response.statusCode).toBe(200);
   });
 
-  test('It update a user', async () => {
+  test('It updates a user', async () => {
     const response = await request(app)
       .put('/users')
       .set('Authorization', `Bearer ${accessToken}`)
@@ -206,7 +213,6 @@ describe('User Controller Tests', () => {
         state: 'London',
         mob_phone: '08135539123',
         address: '10 Marina Street, Lagos'
-
       });
 
     responseAssert(response);

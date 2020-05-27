@@ -7,4 +7,4 @@ test
 koa/views
 src/generated
 server/server.md
-server/database/sql
+server/database/database.sqlite3
