@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // eslint-disable-next-line no-unused-vars
 import RoadRescueApp from './RoadRescueApp';
-import * as serviceWorker from '../serviceWorker';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
