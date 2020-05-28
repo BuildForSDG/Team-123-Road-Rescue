@@ -102,3 +102,10 @@ dist
 
 # TernJS port file
 .tern-port
+
+# My VSCode Settings to avoid TS1219 [ERROR]: Experimental 
+# support for decorators is a feature that is subject to change in a future release
+tsconfig.json
+
+# SQLITE
+server/database/database.sqlite3
