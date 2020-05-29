@@ -1,7 +1,5 @@
 require('dotenv').config();
 
-<<<<<<< HEAD
-=======
 module.exports = {
 
   development: {
@@ -19,7 +17,6 @@ module.exports = {
 
 };
 /*
->>>>>>> develop
 // change username
 module.exports = {
   development: {
@@ -41,8 +38,4 @@ module.exports = {
   production: {
     use_env_variable: 'DATABASE_URL'
   }
-<<<<<<< HEAD
-};
-=======
 }; */
->>>>>>> develop

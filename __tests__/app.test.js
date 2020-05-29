@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-
-import appT from '../src/app';
-
-require('iconv-lite').encodingExists('cesu8');
-
-
-describe('app module', () => {
-=======
-
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
@@ -27,7 +17,6 @@ describe('First React component test with Enzyme', () => {
 
 
 /* describe('app module', () => {
->>>>>>> develop
   test('it exists', async () => {
     expect(appT).toBeDefined();
   });
