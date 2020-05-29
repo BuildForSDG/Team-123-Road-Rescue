@@ -10,7 +10,7 @@ import RoadRescueApp from '../src/RoadRescueApp';
 require('iconv-lite').encodingExists('cesu8');
 
 configure({ adapter: new Adapter() });
-describe('First React component test with Enzyme', () => {
+describe('RoadRescue component test with Enzyme', () => {
   it('renders without crashing', () => {
     shallow(<RoadRescueApp />);
   });
