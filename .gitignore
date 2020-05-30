@@ -105,7 +105,11 @@ dist
 
 # My VSCode Settings to avoid TS1219 [ERROR]: Experimental 
 # support for decorators is a feature that is subject to change in a future release
+<<<<<<< HEAD
+tsconfig.json
+=======
 tsconfig.json
 
 # SQLITE
 server/database/database.sqlite3
+>>>>>>> develop

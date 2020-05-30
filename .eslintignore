@@ -7,4 +7,8 @@ test
 koa/views
 src/generated
 server/server.md
+<<<<<<< HEAD
+server/database/sql
+=======
 server/database/database.sqlite3
+>>>>>>> develop
