@@ -1,4 +1,4 @@
-barebones setup for JavaScript / Node projects replace this with a one-liner phrase describing this project or app
+Road Rescue - A solution that helps avoid, alert, inform, monitor and report road injuries and deaths.
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a9435c4c46ca498899d23015c55faa17)](https://app.codacy.com/gh/BuildForSDG/Team-123-Road-Rescue?utm_source=github.com&utm_medium=referral&utm_content=BuildForSDG/Team-123-Road-Rescue&utm_campaign=Badge_Grade_Dashboard)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a9435c4c46ca498899d23015c55faa17)](https://app.codacy.com/gh/BuildForSDG/Team-123-Road-Rescue?utm_source=github.com&utm_medium=referral&utm_content=BuildForSDG/Team-123-Road-Rescue&utm_campaign=Badge_Grade_Settings)
