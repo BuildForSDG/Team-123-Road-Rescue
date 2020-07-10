@@ -16,7 +16,7 @@ import SearchInput from '../src/components/SearchInput';
 import WeatherText from '../src/components/WeatherText';
 Icon.loadFont();
 
-export default class App extends React.Component {
+export default class Weather extends React.Component {
   state = {
     loading: false,
     error: false,
